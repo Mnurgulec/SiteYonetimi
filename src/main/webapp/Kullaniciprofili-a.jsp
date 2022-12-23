@@ -1,10 +1,11 @@
+<%@page import="tumani.Yonetici"%>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<jsp:useBean id="yn" class="tumani.Yonetici" scope="session"/>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +70,7 @@
 															<a href="Hakkimizda.jsp">Hakkımızda</a>
 														</li>
 														<li>
-															<a href="Duyurular.jsp">Duyurular</a>
+															<a href="DuyuruEkle-a.jsp">Duyuru Ekle</a>
 														</li>
 														<li>
 															<a href="404.jsp">404</a>
@@ -83,6 +84,10 @@
 															<a href="Kullaniciprofili-k.jsp">Kişi Bilgileri</a>
 														</li>
 													</ul>
+												</li>
+                                                                                            <li class="menu-item-has-children page_item_has_children">
+													<a href="Iletisim.jsp;">İletişim</a>
+													
 												</li>
 											</ul>
 										</div>
@@ -98,12 +103,10 @@
 										<nav class="wt-usernav">
 											<ul>
 												<li >
-													<a href="javascript:void(0);">
+													<a href="Giderlertakvimi-k.jsp">
 														<span>Giderler Takvimi</span>
 													</a>
-													<ul class="sub-menu children">
-														<li><a href="Giderlertakvimi-k.jsp">Giderler Takvimi</a></li>
-													</ul>
+													
 												</li>
 												<li>
 													<a href="Uyebilgileri-k.jsp">
@@ -115,27 +118,12 @@
 														<span>Ayarlar</span>
 													</a>
 												</li>
-												
-												<li>
-													<a href="Iletisim.jsp">
-														<span>İletişim</span>
-													</a>
-												</li>
-												<li>
-													<a href="Kaydol.jsp">
-														<span>Kayıt Ol</span>
-													</a>
-												</li>
-												
-												<li>
-													<a href="Girisyap.jsp">
-														<span>Giriş Yap</span>
-													</a>
-												</li>
+											
+											
 												
 												<li>
 													<a href="Sifremiunuttum.jsp">
-														<span>Şifremi Unuttum</span>
+														<span>Şifre Değiştir</span>
 													</a>
 												</li>
 												<li>
@@ -181,7 +169,9 @@
 													</div>
 												</figure>
 												<div class="wt-title">
-													<h3><i class="fa fa-check-circle"></i> Tuğçe Caymaz</h3>
+													<h3><i class="fa fa-check-circle"></i>  <%
+                                    Yonetici y1=new Yonetici();
+                                    out.println(y1.kullaniciAdiCek(yn.getEmail()));%></h3>
 												</div>
 											</div>
 										</div>
@@ -189,15 +179,27 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-9 float-left">
 										<div class="row">
 											<div class="wt-proposalhead wt-userdetails">
-												<h2>4.Kat 16 Numaralı Daire</h2>
-												<div class="wt-description">
-													<p>Elektrik Borcu:</p>
-													<p>Su Borcu:</p>
-													<p>Gaz Borcu:</p>
-													<p>Aidat Borcu:</p>
-													<p>Güvenlik Borcu:</p>
-													<p>Temizlik Borcu:</p>
-													<p>Diğer Giderler Borcu:</p>
+												<h2>Site Yöneticisi</h2>
+												<div class="">
+													<p>Email:<%
+                                                                                                            out.println(" "+yn.getEmail());
+                                                                                                            %></p>
+													<p>Şifre:
+                                                                                                         <%
+                                                                                                            Yonetici y3=new Yonetici();
+                                                                                                            out.println(y3.sifreCek(yn.getEmail()));
+                                                                                                            %></p>
+													<p>Telefon Numarası:
+                                                                                                            <%
+                                                                                                            Yonetici y2=new Yonetici();
+                                                                                                            out.println(y2.TelefonNoCek(yn.getEmail()));
+                                                                                                            %></p>
+													<p>Adres:
+                                                                                                          <%
+                                                                                                            Yonetici y4=new Yonetici();
+                                                                                                            out.println(y4.AdresCek(yn.getEmail()));
+                                                                                                            %></p>
+													
 												</div>
 											</div>
 										</div>
@@ -236,9 +238,9 @@
 									<ul class="wt-fwidgetcontent">
 										<li><a href="Anasayfa.jsp">Ana Sayfa</a></li>
 										<li><a href="Hakkimizda.jsp">Hakkımızda</a></li>
-										<li><a href="Duyurular.jsp">Duyurular</a></li>
+										<li><a href="DuyuruEkle-a.jsp">Duyuru Ekle</a></li>
 										<li><a href="Ayarlar.jsp">Ayarlar</a></li>
-										<li><a href="Iletisim.html">İletişim</a></li>
+										<li><a href="Iletisim.jsp">İletişim</a></li>
 									</ul>
 								</div>
 							</div>

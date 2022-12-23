@@ -29,12 +29,13 @@ public class SifreYenileme {
              st.execute(sql);
              
              con.close();
+             return true;
         }catch(Exception e){
              System.out.println(e);
-
+            return false;
 
         }
-         return true;
+         
     }
     }
 

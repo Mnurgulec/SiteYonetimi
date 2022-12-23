@@ -1,3 +1,4 @@
+<%@page import="tumani.Daireler"%>
 <%@page import="tumani.Borclar"%>
 <%@page import="tumani.Kullanici"%>
 <!doctype html>
@@ -168,8 +169,8 @@
 												</figure>
 												<div class="wt-title">
 													<h3><i class="fa fa-check-circle"></i>  <%
-                                    Kullanici k3=new Kullanici();
-                                    out.println(k3.kullaniciAdiCek(obj.getKullaniciEmail()));%></h3>
+                                                                        Kullanici k3=new Kullanici();
+                                                                        out.println(k3.kullaniciAdiCek(obj.getKullaniciEmail()));%></h3>
 												</div>
 											</div>
 										</div>
@@ -177,24 +178,46 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-9 float-left">
 										<div class="row">
 											<div class="wt-proposalhead wt-userdetails">
-												<h2>4.Kat 16 Numaralı Daire</h2>
+												<h2><%
+                                                Daireler d1=new Daireler();
+                                                out.println(d1.katCek(obj.getKullaniciEmail())+" "+".Kat");
+                                                out.println(d1.daireNoCek(obj.getKullaniciEmail())+" "+"Nolu Daire");
+                                                %></h2>
 												<div class="wt-description">
 													<p>Elektrik Borcu:<%
                                                 Borclar borc=new Borclar();
                                                 out.println(borc.elektrikBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
                                                 %></p>
-													<p>Bina Giderleri Borcu:<%
+													<p>Su Borcu:<%
                                                 Borclar borc2=new Borclar();
-                                                out.println(borc2.binaBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
+                                                out.println(borc2.suBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
                                                 %></p>
-													<p>Gaz Borcu:</p>
-													<p>Çalışan Borcu:<%
+													<p>Gaz Borcu:
+                                                                                                        <%
                                                 Borclar borc3=new Borclar();
-                                                out.println(borc3.calisanBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
+                                                out.println(borc3.gazBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
                                                 %></p>
-													<p>Güvenlik Borcu:</p>
-													<p>Temizlik Borcu:</p>
-													<p>Diğer Giderler Borcu:</p>
+													<p>Güvenlik Borcu:<%
+                                                Borclar borc4=new Borclar();
+                                                out.println(borc4.guvenlikBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
+                                                %></p>
+													<p>Temizlik Borcu:
+                                                                                                        <%
+                                                Borclar borc5=new Borclar();
+                                                out.println(borc5.temizlikBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
+                                                %></p>
+													<p>Diğer Giderler Borcu:
+                                                                                                        <%
+                                                Borclar borc6=new Borclar();
+                                                out.println(borc6.digerBorclariCek(obj.getKullaniciEmail())+" "+"TL"); 
+                                                %></p>
+                                                                                                        <p>Aidat Borcu:
+                                                                                                        <%
+                                                Borclar borc7=new Borclar();
+                                                out.println(borc7.aidatBorcuCek(obj.getKullaniciEmail())+" "+"TL"); 
+                                                %></p>
+                                                                                                        <p>Ödeme Türü:Kredi Kartı </p>
+                                                                                                        <p>Ödeme Durumu:Ödendi </p>
 												</div>
 											</div>
 										</div>

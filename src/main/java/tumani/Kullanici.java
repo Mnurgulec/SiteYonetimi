@@ -76,7 +76,19 @@ public class Kullanici {
     public void setKullaniciTelefonNo(String kullaniciTelefonNo) {
         this.kullaniciTelefonNo = kullaniciTelefonNo;
     }
-   
+      public void ekle(String kullaniciAdi, String kullaniciSifresi, String kullaniciEmail,String kullaniciTelefonNo ) {
+        String sql = "INSERT INTO `kullanici`(`kullaniciAdi`, `kullaniciSifresi`, `kullaniciEmail`,`kullaniciTelefonNo`) VALUES ('" + kullaniciAdi + "','" + kullaniciSifresi + "','" + kullaniciEmail +"','"+kullaniciTelefonNo+ "')";
+        System.out.println("sql = " + sql);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+            Statement stmt = con.createStatement();
+            stmt.execute(sql);
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
      public static ArrayList<Kullanici> Yazdir(String email,String sifre) throws ClassNotFoundException{
         ArrayList<Kullanici> uList = new ArrayList<>();
        
@@ -128,7 +140,8 @@ public class Kullanici {
         }
            return k1.getKullaniciTelefonNo();
     }
-     public String AdresCek(String email){
+    
+      public String emailCek(String email){
           Kullanici k1=new Kullanici();
           try{
             PreparedStatement preparedStatement;
@@ -136,12 +149,12 @@ public class Kullanici {
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
              
-             ResultSet rs=st.executeQuery("SELECT kullaniciAdres FROM kullanici WHERE kullaniciEmail='" + email + "';");      
+             ResultSet rs=st.executeQuery("SELECT kullaniciEmail FROM kullanici WHERE kullaniciEmail='" + email + "';");      
              
         while(rs.next()){                    
            
           
-            k1.setKullaniciAdres(rs.getString("kullaniciAdres"));
+            k1.setKullaniciEmail(rs.getString("kullaniciEmail"));
                     
             
             
@@ -151,8 +164,12 @@ public class Kullanici {
             
          
         }
-           return k1.getKullaniciAdres();
+           return k1.getKullaniciEmail();
     }
+     
+     
+     
+     
       public String kullaniciAdiCek(String email){
           Kullanici k1=new Kullanici();
           try{
@@ -177,6 +194,32 @@ public class Kullanici {
          
         }
            return k1.getKullaniciAdi();
+    }
+      
+          public String sifreCek(String email){
+          Kullanici k1=new Kullanici();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT kullaniciSifresi FROM kullanici WHERE kullaniciEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+           
+          
+            k1.setKullaniciSifresi(rs.getString("kullaniciSifresi"));
+                    
+            
+            
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+            
+         
+        }
+           return k1.getKullaniciSifresi();
     }
    
 

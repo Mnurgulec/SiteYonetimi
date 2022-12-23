@@ -76,7 +76,7 @@ figure {
 }
 img {
 	height: auto;
-	max-width: 100%;
+	max-width: 50%;
 }
 strong { color: #414141; }
 iframe {

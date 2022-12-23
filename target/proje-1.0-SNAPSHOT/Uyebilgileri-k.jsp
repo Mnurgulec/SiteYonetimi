@@ -1,8 +1,11 @@
+<%@page import="tumani.Daireler"%>
+<%@page import="tumani.Kullanici"%>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
+<jsp:useBean id="obj" class="tumani.Kullanici" scope="session"/>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
 	<meta charset="utf-8">
@@ -123,21 +126,11 @@
 														<span>İletişim</span>
 													</a>
 												</li>
-												<li>
-													<a href="Kaydol.jsp">
-														<span>Kayıt Ol</span>
-													</a>
-												</li>
+												
 												
 												<li>
-													<a href="Girisyap.jsp">
-														<span>Giriş Yap</span>
-													</a>
-												</li>
-												
-												<li>
-													<a href="Sifremiunuttum.jsp">
-														<span>Şifremi Unuttum</span>
+													<a href="SifreDegistir.jsp">
+														<span>Şifremi Değiştir</span>
 													</a>
 												</li>
 												<li>
@@ -195,12 +188,7 @@
 										<span>Profil</span>
 									</a>
 								</li>
-								<li class="wt-active">
-									<a href="Girisyap.jsp">
-										<i class="ti-anchor"></i>
-										<span>Giriş Yap</span>
-									</a>
-								</li>
+								
 								<li>
 									<a href="Iletisim.jsp">
 										<i class="ti-tag"></i>
@@ -243,19 +231,35 @@
 												<form class="wt-formtheme wt-userform">
 													<fieldset>
 														<div class="form-group form-group-half">
-															<input type="text" name="ad" class="form-control" placeholder="Ad">
+															<button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                          Kullanici k1=new Kullanici();
+                                                                                                                          out.println(k1.kullaniciAdiCek(obj.getKullaniciEmail()));%> </button>
 														</div>
 														<div class="form-group form-group-half">
-															<input type="text" name="soyad" class="form-control" placeholder="Soyad">
+															<button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                          Kullanici k2=new Kullanici();
+                                                                                                                          out.println(k2.sifreCek(obj.getKullaniciEmail()));%> </button>
 														</div>
 														<div class="form-group form-group-half">
-															<input type="email" name="soyad" class="form-control" placeholder="Email">
+															<button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                          Kullanici k3=new Kullanici();
+                                                                                                                          out.println(k3.TelefonNoCek(obj.getKullaniciEmail()));%> </button>
 														</div>
 														<div class="form-group form-group-half">
-															<input type="text" name="soyad" class="form-control" placeholder="Telefon Numarası">
+															<button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                          Kullanici k4=new Kullanici();
+                                                                                                                          out.println(k4.emailCek(obj.getKullaniciEmail()));%> </button>
 														</div>
 														<div class="form-group form-group-half">
-															<input type="text" name="soyad" class="form-control" placeholder="Daire ve Kat Numarası">
+															<button  name="ad" class="form-control" placeholder="">
+                                                                                                                            <%
+                                                                                                                           Daireler d1=new Daireler();
+                                                                                                                           out.println(d1.katCek(obj.getKullaniciEmail())+" "+".Kat");
+                                                                                                                           out.println(d1.daireNoCek(obj.getKullaniciEmail())+" "+"Nolu Daire");
+                                                                                                                           %> 
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        </button>
 														</div>
 													</fieldset>
 												</form>

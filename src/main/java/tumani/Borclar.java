@@ -16,8 +16,60 @@ import java.sql.Statement;
  */
 public class Borclar {
     double binaElektrigiBorcu;
-    double calisanBorcu;
-    double binaGiderleri;
+    double suBorcu;
+    double gazBorcu;
+    double guvenlikBorcu;
+    double temizlikBorcu;
+    double digerBorclar;
+    double aidatBorcu;
+
+    public double getSuBorcu() {
+        return suBorcu;
+    }
+
+    public void setSuBorcu(double suBorcu) {
+        this.suBorcu = suBorcu;
+    }
+
+    public double getGazBorcu() {
+        return gazBorcu;
+    }
+
+    public void setGazBorcu(double gazBorcu) {
+        this.gazBorcu = gazBorcu;
+    }
+
+    public double getGuvenlikBorcu() {
+        return guvenlikBorcu;
+    }
+
+    public void setGuvenlikBorcu(double guvenlikBorcu) {
+        this.guvenlikBorcu = guvenlikBorcu;
+    }
+
+    public double getTemizlikBorcu() {
+        return temizlikBorcu;
+    }
+
+    public void setTemizlikBorcu(double temizlikBorcu) {
+        this.temizlikBorcu = temizlikBorcu;
+    }
+
+    public double getDigerBorclar() {
+        return digerBorclar;
+    }
+
+    public void setDigerBorclar(double digerBorclar) {
+        this.digerBorclar = digerBorclar;
+    }
+
+    public double getAidatBorcu() {
+        return aidatBorcu;
+    }
+
+    public void setAidatBorcu(double aidatBorcu) {
+        this.aidatBorcu = aidatBorcu;
+    }
 
     public double getBinaElektrigiBorcu() {
         return binaElektrigiBorcu;
@@ -27,21 +79,6 @@ public class Borclar {
         this.binaElektrigiBorcu = binaElektrigiBorcu;
     }
 
-    public double getCalisanBorcu() {
-        return calisanBorcu;
-    }
-
-    public void setCalisanBorcu(double calisanBorcu) {
-        this.calisanBorcu = calisanBorcu;
-    }
-
-    public double getBinaGiderleri() {
-        return binaGiderleri;
-    }
-
-    public void setBinaGiderleri(double binaGiderleri) {
-        this.binaGiderleri = binaGiderleri;
-    }
     
     public double elektrikBorcuCek(String email){
         Borclar b1=new Borclar();
@@ -51,10 +88,10 @@ public class Borclar {
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
              
-             ResultSet rs=st.executeQuery("SELECT apartmanElektriği  FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
+             ResultSet rs=st.executeQuery("SELECT elektrik  FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
              
         while(rs.next()){                    
-            b1.setBinaElektrigiBorcu(rs.getInt("apartmanElektriği"));
+            b1.setBinaElektrigiBorcu(rs.getInt("elektrik"));
         
         }
         }catch(Exception e){            
@@ -62,7 +99,7 @@ public class Borclar {
         }
            return b1.getBinaElektrigiBorcu();
     }
-     public double binaBorcuCek(String email){
+     public double suBorcuCek(String email){
         Borclar b1=new Borclar();
           try{
             PreparedStatement preparedStatement;
@@ -70,17 +107,17 @@ public class Borclar {
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
              
-             ResultSet rs=st.executeQuery("SELECT binaGiderleri  FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
+             ResultSet rs=st.executeQuery("SELECT su  FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
              
         while(rs.next()){    
-            b1.setBinaGiderleri(rs.getInt("binaGiderleri"));    
+            b1.setSuBorcu(rs.getInt("su"));    
         }
         }catch(Exception e){            
              System.out.println(e); 
         }
-           return b1.getBinaGiderleri();
+           return b1.getSuBorcu();
     }
-      public double calisanBorcuCek(String email){
+      public double gazBorcuCek(String email){
         Borclar b1=new Borclar();
           try{
             PreparedStatement preparedStatement;
@@ -88,14 +125,88 @@ public class Borclar {
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
              
-             ResultSet rs=st.executeQuery("SELECT calisanBorc FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
+             ResultSet rs=st.executeQuery("SELECT gaz FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
              
         while(rs.next()){                    
-            b1.setCalisanBorcu(rs.getInt("calisanBorc")); 
+            b1.setGazBorcu(rs.getInt("gaz")); 
         }
         }catch(Exception e){            
              System.out.println(e);
         }
-           return b1.getCalisanBorcu();
+           return b1.getGazBorcu();
+    }
+      
+      
+      public double guvenlikBorcuCek(String email){
+        Borclar b1=new Borclar();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT guvenlik FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+            b1.setGuvenlikBorcu(rs.getInt("guvenlik")); 
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+        }
+           return b1.getGuvenlikBorcu();
+    }
+      public double temizlikBorcuCek(String email){
+        Borclar b1=new Borclar();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT temizlik FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+            b1.setTemizlikBorcu(rs.getInt("temizlik")); 
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+        }
+           return b1.getTemizlikBorcu();
+    }
+      public double digerBorclariCek(String email){
+        Borclar b1=new Borclar();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT diger FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+            b1.setDigerBorclar(rs.getInt("diger")); 
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+        }
+           return b1.getDigerBorclar();
+    }
+      public double aidatBorcuCek(String email){
+        Borclar b1=new Borclar();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT aidat FROM borclar INNER JOIN kullanici ON kullanici.id=borclar.kullaniciID WHERE kullaniciEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+            b1.setAidatBorcu(rs.getInt("aidat")); 
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+        }
+           return b1.getAidatBorcu();
     }
 }

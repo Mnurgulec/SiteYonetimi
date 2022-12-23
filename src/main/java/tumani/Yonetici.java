@@ -17,12 +17,21 @@ import java.util.ArrayList;
  */
 public class Yonetici {
     int id;
+    String kullaniciAdi;
+
     String email;
     String sifre;
     String telefonNo;
     String yoneticiAdi;
     String adres;
+    
+    public String getKullaniciAdi() {
+        return kullaniciAdi;
+    }
 
+    public void setKullaniciAdi(String kullaniciAdi) {
+        this.kullaniciAdi = kullaniciAdi;
+    }
     public int getId() {
         return id;
     }
@@ -79,14 +88,13 @@ public class Yonetici {
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
              
-             ResultSet rs=st.executeQuery("SELECT *FROM kullanici WHERE yoneticiEmail='" + email + "' and yoneticiSifresi='" + sifre + "';");      
+             ResultSet rs=st.executeQuery("SELECT *FROM yonetici WHERE yoneticiEmail='" + email + "' and yoneticiSifre='" + sifre + "';");      
              
         while(rs.next()){                    
-           
-            Yonetici k1=new Yonetici();
-            k1.setEmail(rs.getString("yoneticiEmail"));
-            k1.setSifre(rs.getString("yoneticiSifresi"));            
-            List.add(k1);
+            Yonetici y1=new Yonetici();
+            y1.setEmail(rs.getString("yoneticiEmail"));
+            y1.setSifre(rs.getString("yoneticiSifre"));            
+            List.add(y1);
             
         }
         }catch(Exception e){            
@@ -95,5 +103,104 @@ public class Yonetici {
               
         }
            return List;
+    }
+     
+     
+    public String kullaniciAdiCek(String email){
+          Yonetici y1=new Yonetici();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT yoneticiAdi FROM yonetici WHERE yoneticiEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+  
+            y1.setKullaniciAdi(rs.getString("yoneticiAdi"));
+                    
+            
+            
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+            
+         
+        }
+           return y1.getKullaniciAdi();
+    }
+    
+     public String TelefonNoCek(String email){
+          Yonetici y1=new Yonetici();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT yoneticiTelefonNo FROM yonetici WHERE yoneticiEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+           
+          
+            y1.setTelefonNo(rs.getString("yoneticiTelefonNo"));
+                    
+            
+            
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+            
+         
+        }
+           return y1.getTelefonNo();
+    }
+         public String sifreCek(String email){
+          Yonetici y1=new Yonetici();
+          try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT yoneticiSifre FROM yonetici WHERE yoneticiEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+           
+          
+            y1.setSifre(rs.getString("yoneticiSifre"));
+                    
+            
+            
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+            
+         
+        }
+           return y1.getSifre();
+    } 
+     
+     
+     
+     
+     public String AdresCek(String email){
+          Yonetici y1=new Yonetici();
+          try{
+            PreparedStatement preparedStatement;
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+            Statement st=con.createStatement();
+             
+            ResultSet rs=st.executeQuery("SELECT yoneticiAdres FROM yonetici WHERE yoneticiEmail='" + email + "';");      
+             
+        while(rs.next()){                    
+            y1.setAdres(rs.getString("yoneticiAdres"));
+        }
+        }catch(Exception e){            
+             System.out.println(e); 
+        }
+           return y1.getAdres();
     }
 }

@@ -1,3 +1,7 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -238,13 +242,90 @@
 							indexLabelFontSize: 16,
 							indexLabel: "{label} - {y}%",
 							dataPoints: [
-								{ y: 15, label: "Güvenlik" },
-								{ y: 15, label: "Temizlik Görevlisi" },
-								{ y: 15, label: "Aidat" },
-								{ y: 15, label: "Elektrik" },
-								{ y: 10, label: "Su" },
-								{ y: 10, label: "Gaz" },
-								{ y: 20, label: "Diğer Giderler" }
+								{ y:  <% try {
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("select * from `borclar` where id=12");
+ while (rs.next()) {
+ out.println(rs.getString("guvenlik")); }
+ con.close();
+  } catch (Exception e) {
+  e.printStackTrace();
+ }
+  %>, label: "Güvenlik" },
+								{ y:  <% try {
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("select * from `borclar` where id=12");
+ while (rs.next()) {
+ out.println(rs.getString("temizlik")); }
+ con.close();
+  } catch (Exception e) {
+  e.printStackTrace();
+ }
+  %>, label: "Temizlik Görevlisi" },
+								{ y:  <% try {
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("select * from `borclar` where id=12");
+ while (rs.next()) {
+ out.println(rs.getString("aidat")); }
+ con.close();
+  } catch (Exception e) {
+  e.printStackTrace();
+ }
+  %>, label: "Aidat" },
+								{ y:  <% try {
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("select * from `borclar` where id=12");
+ while (rs.next()) {
+ out.println(rs.getString("elektrik")); }
+ con.close();
+  } catch (Exception e) {
+  e.printStackTrace();
+ }
+  %>, label: "Elektrik" },
+								{ y:  <% try {
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("select * from `borclar` where id=12");
+ while (rs.next()) {
+ out.println(rs.getString("su")); }
+ con.close();
+  } catch (Exception e) {
+  e.printStackTrace();
+ }
+  %>, label: "Su" },
+								{ y:  <% try {
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("select * from `borclar` where id=12");
+ while (rs.next()) {
+ out.println(rs.getString("gaz")); }
+ con.close();
+  } catch (Exception e) {
+  e.printStackTrace();
+ }
+  %>, label: "Gaz" },
+								{ y:  <% try {
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("select * from `borclar` where id=12");
+ while (rs.next()) {
+ out.println(rs.getString("diger")); }
+ con.close();
+  } catch (Exception e) {
+  e.printStackTrace();
+ }
+  %>, label: "Diğer Giderler" }
 							]
 						}]
 					});
