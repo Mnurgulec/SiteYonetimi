@@ -127,11 +127,7 @@
                                                                                                                                         <span>İletişim</span>
                                                                                                                                     </a>
                                                                                                                                 </li>
-                                                                                                                                <li>
-                                                                                                                                    <a href="Kaydol.jsp">
-                                                                                                                                        <span>Kayıt Ol</span>
-                                                                                                                                    </a>
-                                                                                                                                </li>
+                                                                                                                               
 
                                                                                                                                 <li>
                                                                                                                                     <a href="Girisyap.jsp">

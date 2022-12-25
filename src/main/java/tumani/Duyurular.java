@@ -16,8 +16,17 @@ import java.util.ArrayList;
  * @author user
  */
 public class Duyurular {
+    int id;
     String baslik;
     String duyuru;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getBaslik() {
         return baslik;
@@ -35,7 +44,7 @@ public class Duyurular {
         this.duyuru = duyuru;
     }
     
-    public static boolean duyuruEkle(String baslik,String duyuru) throws ClassNotFoundException{
+    public static boolean duyuruEkle(int id,String baslik,String duyuru) throws ClassNotFoundException{
         ArrayList<Duyurular> List = new ArrayList<>();
        
            try{
@@ -43,7 +52,7 @@ public class Duyurular {
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
-             String sql="INSERT INTO duyurular(duyuruBasligi,duyuruMetni) values('" + baslik + "' , '" + duyuru + "')";
+             String sql="INSERT INTO duyurular(id,duyuruBasligi,duyuruMetni) values('" + id + "','" + baslik + "' , '" + duyuru + "')";
              st.execute(sql);    
              return true;
         
@@ -54,4 +63,69 @@ public class Duyurular {
         }
            
     }
+     public static ArrayList<Duyurular> duyuruIDCek(){
+         ArrayList<Duyurular> list=new ArrayList<>();
+           try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             ResultSet rs=st.executeQuery("SELECT id FROM duyurular");     
+             
+        while(rs.next()){       
+            Duyurular d1=new Duyurular();
+            d1.setId(rs.getInt("id"));
+            list.add(d1);
+        }
+ 
+        }catch(Exception e){            
+             System.out.println(e);
+        }
+        return list;
+    }
+        public static ArrayList<Duyurular> duyuruBasligiCek(){
+            ArrayList<Duyurular> list=new ArrayList<>();
+            
+       
+           try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             ResultSet rs=st.executeQuery("SELECT duyuruBasligi FROM duyurular");      
+             
+        while(rs.next()){        
+            Duyurular d1=new Duyurular();
+            d1.setBaslik(rs.getString("duyuruBasligi"));
+             list.add(d1);
+        }
+ 
+        }catch(Exception e){            
+             System.out.println(e);
+        }
+        return  list;
+    }
+        
+        public static ArrayList<Duyurular> duyuruMetniCek(){
+            ArrayList<Duyurular> list=new ArrayList<>();
+        
+           try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             ResultSet rs=st.executeQuery("SELECT duyuruMetni FROM duyurular");      
+             
+        while(rs.next()){       
+            Duyurular d1=new Duyurular();
+            d1.setDuyuru(rs.getString("duyuruMetni"));
+            list.add(d1);
+        }
+ 
+        }catch(Exception e){            
+             System.out.println(e);
+        }
+        return list;
+    }
+     
 }

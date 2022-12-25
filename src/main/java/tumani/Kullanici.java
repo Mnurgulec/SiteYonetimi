@@ -23,15 +23,27 @@ public class Kullanici {
     String kullaniciSifresi;
     String kullaniciEmail;
     String kullaniciTelefonNo;
-     String kullaniciAdres;
+  
 
-    public String getKullaniciAdres() {
-        return kullaniciAdres;
+    public Kullanici() {
     }
 
-    public void setKullaniciAdres(String kullaniciAdres) {
-        this.kullaniciAdres = kullaniciAdres;
+    public Kullanici(int id, String kullaniciAdi, String kullaniciSifresi, String kullaniciEmail, String kullaniciTelefonNo, String kullaniciAdres) {
+        this.id = id;
+        this.kullaniciAdi = kullaniciAdi;
+        this.kullaniciSifresi = kullaniciSifresi;
+        this.kullaniciEmail = kullaniciEmail;
+        this.kullaniciTelefonNo = kullaniciTelefonNo;
+        
     }
+
+    Kullanici(int aInt, String string, String string0, String string1, String string2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+   
+ 
    
 
     public int getId() {
@@ -76,7 +88,7 @@ public class Kullanici {
     public void setKullaniciTelefonNo(String kullaniciTelefonNo) {
         this.kullaniciTelefonNo = kullaniciTelefonNo;
     }
-      public void ekle(String kullaniciAdi, String kullaniciSifresi, String kullaniciEmail,String kullaniciTelefonNo ) {
+    public void ekle(String kullaniciAdi, String kullaniciSifresi, String kullaniciEmail,String kullaniciTelefonNo ) {
         String sql = "INSERT INTO `kullanici`(`kullaniciAdi`, `kullaniciSifresi`, `kullaniciEmail`,`kullaniciTelefonNo`) VALUES ('" + kullaniciAdi + "','" + kullaniciSifresi + "','" + kullaniciEmail +"','"+kullaniciTelefonNo+ "')";
         System.out.println("sql = " + sql);
         try {
@@ -89,7 +101,7 @@ public class Kullanici {
             e.printStackTrace();
         }
     }
-     public static ArrayList<Kullanici> Yazdir(String email,String sifre) throws ClassNotFoundException{
+    public static ArrayList<Kullanici> dogrula(String email,String sifre) throws ClassNotFoundException{
         ArrayList<Kullanici> uList = new ArrayList<>();
        
            try{
@@ -104,7 +116,37 @@ public class Kullanici {
            
             Kullanici k1=new Kullanici();
             k1.setKullaniciEmail(rs.getString("kullaniciEmail"));
-            k1.setKullaniciSifresi(rs.getString("kullaniciSifresi"));            
+            k1.setKullaniciSifresi(rs.getString("kullaniciSifresi"));  
+         
+            uList.add(k1);
+            
+        }
+        }catch(Exception e){            
+             System.out.println(e);
+            
+              
+        }
+           return uList;
+    }
+     public static ArrayList<Kullanici> Yazdir() throws ClassNotFoundException{
+        ArrayList<Kullanici> uList = new ArrayList<>();
+       
+           try{
+            PreparedStatement preparedStatement;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             
+             ResultSet rs=st.executeQuery("SELECT *FROM kullanici");      
+             
+        while(rs.next()){                    
+           
+            Kullanici k1=new Kullanici();
+             k1.setId(rs.getInt("id"));
+            k1.setKullaniciEmail(rs.getString("kullaniciEmail"));
+            k1.setKullaniciSifresi(rs.getString("kullaniciSifresi"));  
+            k1.setKullaniciAdi(rs.getString("kullaniciAdi"));
+            k1.setKullaniciTelefonNo(rs.getString("kullaniciTelefonNo"));
             uList.add(k1);
             
         }

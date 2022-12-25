@@ -1,9 +1,23 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.util.List"%>
+<%@page import="tumani.Kullanici"%>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+<% /*
+ List<Kullanici> kullanicilar = new Listeleme().listele();
+ request.setAttribute("kullanici", kullanicilar); */
+%>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,116 +59,96 @@
 	<div id="wt-wrapper" class="wt-wrapper wt-haslayout">
 		<!-- Content Wrapper Start -->
 		<div class="wt-contentwrapper">
-			<!-- Header Start -->
-			<header id="wt-header" class="wt-header wt-headervtwo wt-haslayout">
-				<div class="wt-navigationarea">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<strong class="wt-logo"><a href="index-2.html"><img src="images/14.png" alt="company logo here"></a></strong>
-								<form class="wt-formtheme wt-formbanner wt-formbannervtwo">
-								</form>
-								<div class="wt-rightarea">
-									<nav id="wt-nav" class="wt-nav navbar-expand-lg">
-										<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-											<i class="lnr lnr-menu"></i>
-										</button>
-										<div class="collapse navbar-collapse wt-navigation" id="navbarNav">
-											<ul class="navbar-nav">
-												<li class="menu-item-has-children page_item_has_children">
-													<a href="javascript:void(0);">Ana Sayfa</a>
-													<ul class="sub-menu">
-														<li >
-															<a href="Anasayfa.jsp">Ana Sayfa</a>
-														</li>
-														<li>
-															<a href="Hakkimizda.jsp">Hakkımızda</a>
-														</li>
-														<li>
-															<a href="Duyurular.jsp">Duyurular</a>
-														</li>
-														<li>
-															<a href="404.jsp">404</a>
-														</li>
-													</ul>
-												</li>
-												<li class="menu-item-has-children page_item_has_children">
-													<a href="javascript:void(0);">Kişi Bilgileri</a>
-													<ul class="sub-menu">
-														<li class="current-menu-item">
-															<a href="Kullaniciprofili-k.jsp">Kişi Bilgileri</a>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</div>
-									</nav>
-									<div class="wt-userlogedin">
-										<figure class="wt-userimg">
-											<img src="images/save-2.png" alt="image description">
-										</figure>
-										<div class="wt-username">
-											<h3>TU-MANİ</h3>
-											<span>Ayarlar</span>
-										</div>
-										<nav class="wt-usernav">
-											<ul>
-												<li >
-													<a href="javascript:void(0);">
-														<span>Giderler Takvimi</span>
-													</a>
-													<ul class="sub-menu children">
-														<li><a href="Giderlertakvimi-k.jsp">Giderler Takvimi</a></li>
-													</ul>
-												</li>
-												<li>
-													<a href="Uyebilgileri-k.jsp">
-														<span>Üye Bilgileri</span>
-													</a>
-												</li>
-												<li>
-													<a href="Ayarlar.jsp">
-														<span>Ayarlar</span>
-													</a>
-												</li>
-												
-												<li>
-													<a href="Iletisim.jsp">
-														<span>İletişim</span>
-													</a>
-												</li>
-												<li>
-													<a href="Kaydol.jsp">
-														<span>Kayıt Ol</span>
-													</a>
-												</li>
-												
-												<li>
-													<a href="Girisyap.jsp">
-														<span>Giriş Yap</span>
-													</a>
-												</li>
-												
-												<li>
-													<a href="Sifremiunuttum.jsp">
-														<span>Şifremi Unuttum</span>
-													</a>
-												</li>
-												<li>
-													<a href="Anasayfa.jsp">
-														<span>Çıkış Yap</span>
-													</a>
-												</li>
-											</ul>
-										</nav>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-			<!--Header End-->
+			    <!-- Header Start -->
+                                                                                <header id="wt-header" class="wt-header wt-headervtwo wt-haslayout">
+                                                                                    <div class="wt-navigationarea">
+                                                                                        <div class="container-fluid">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                                                    <strong class="wt-logo"><a href="index-2.html"><img src="images/14.png" alt="company logo here"></a></strong>
+                                                                                                    <form class="wt-formtheme wt-formbanner wt-formbannervtwo">
+                                                                                                    </form>
+                                                                                                    <div class="wt-rightarea">
+                                                                                                        <nav id="wt-nav" class="wt-nav navbar-expand-lg">
+                                                                                                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                                                                                                <i class="lnr lnr-menu"></i>
+                                                                                                            </button>
+                                                                                                            <div class="collapse navbar-collapse wt-navigation" id="navbarNav">
+                                                                                                                <ul class="navbar-nav">
+                                                                                                                    <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="Anasayfa-a.jsp">Ana Sayfa</a>
+
+                                                                                                                    </li>
+                                                                                                                    <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="Duyurular.jsp">Duyurular</a>
+                                                                                                                    </li>
+                                                                                                                     <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="DuyuruEkle-a.jsp">Duyuru Ekle</a>
+                                                                                                                    </li>
+                                                                                                                    <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href=Hakkimizda.jsp">Hakkımızda</a>
+
+                                                                                                                    </li>
+                                                                                                                    <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="">Kullanıcı Bilgisi</a>
+                                                                                                                        <ul class="sub-menu">
+                                                                                                                            <li >
+                                                                                                                                <a href="Uyebilgileri-a.jsp">Üye Bilgileri</a>
+                                                                                                                            </li>
+                                                                                                                            <li >
+                                                                                                                                <a href="Kullaniciprofili-a.jsp">Kişi Bilgileri</a>
+                                                                                                                            </li>
+                                                                                                                            <li >
+                                                                                                                                <a href="Giderlertakvimi-a.jsp">Giderler Takvimi</a>
+                                                                                                                            </li>
+
+                                                                                                                        </ul>
+                                                                                                                    </li>
+                                                                                                                    </li>
+
+                                                                                                                    <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="Iletisim.jsp">İletişim</a>
+
+                                                                                                                    </li>
+                                                                                                                    <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="Girisyap.jsp">Giriş Yap</a>
+                                                                                                                        <ul class="sub-menu">
+                                                                                                                            <li >
+                                                                                                                                <a href="Kaydol.jsp">Kayıt Ol</a>
+                                                                                                                            </li>
+                                                                                                                            <li >
+                                                                                                                                <a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
+                                                                                                                            </li>
+                                                                                                                            <li >
+                                                                                                                                <a href="CikisYap.jsp">Çıkış Yap</a>
+                                                                                                                            </li>
+                                                                                                                        </ul>
+                                                                                                                    </li>   
+                                                                                                                    <div class="wt-userlogedin">
+                                                                                                                        <figure class="wt-userimg">
+                                                                                                                            <img src="images/save-2.png" alt="image description">
+                                                                                                                        </figure>
+                                                                                                                        <div class="wt-username">
+                                                                                                                            <h3>TU-MANİ</h3>
+                                                                                                                            <a href="Ayarlar.jsp">Ayarlar</a>
+
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                            </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                </header>
+                                                                                            </div>
+                                                                                            </ul>
+                                                                                            </nav>
+                                                                                        </div>
+                                                                                    </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        </header>
+                                                                        <!--Header End-->
 			<!--Main Start-->
 			<main id="wt-main" class="wt-main wt-haslayout">
 				<!--Sidebar Start-->
@@ -224,51 +218,47 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
 							<div class="wt-haslayout wt-dbsectionspace">
 								<div class="wt-dashboardbox wt-dashboardtabsholder">
-									<div class="wt-dashboardboxtitle">
-										<h2>Profil</h2>
-									</div>
-									<div class="wt-dashboardtabs">
-										<ul class="wt-tabstitle nav navbar-nav">
-											<li class="nav-item">
-												<a class="active" data-toggle="tab" href="#wt-skills">Kişisel Özellikler ve Detaylar</a>
-											</li>
-										</ul>
-									</div>
-									<div class="wt-tabscontent tab-content">
-										<div class="wt-personalskillshold tab-pane active fade show" id="wt-skills">
-											<div class="wt-yourdetails wt-tabsinfo">
-												<div class="wt-tabscontenttitle">
-													<h2>Detaylar</h2>
-												</div>
-												<form class="wt-formtheme wt-userform">
-													<fieldset>
-														<div class="form-group form-group-half">
-															<input type="text" name="ad" class="form-control" placeholder="Ad">
-														</div>
-														<div class="form-group form-group-half">
-															<input type="text" name="soyad" class="form-control" placeholder="Soyad">
-														</div>
-														<div class="form-group form-group-half">
-															<input type="email" name="soyad" class="form-control" placeholder="Email">
-														</div>
-														<div class="form-group form-group-half">
-															<input type="text" name="soyad" class="form-control" placeholder="Telefon Numarası">
-														</div>
-														<div class="form-group form-group-half">
-															<input type="text" name="soyad" class="form-control" placeholder="Daire ve Kat Numarası">
-														</div>
-													</fieldset>
-												</form>
-											</div>
-										</div>
-									</div>
+							<table class="wt-dashboardbox wt-dashboardtabsholder">
+                                                                <tr>
+                                                                <th>id</th>
+                                                                <th>Ad</th>
+                                                                <th>Şifre</th>
+                                                                <th>Telefon Numarası</th>
+                                                                <th>Email</th>
+                                                                <th>Daire Ata</th>
+                                                                </tr>
+                                                        
+                                                                <%
+                                                                     Kullanici k1=new Kullanici();
+                                                                     ArrayList<Kullanici> kullanicilar=k1.Yazdir();
+                                                                     for(int i=0;i<kullanicilar.size();i++){
+                                                                     %>
+                                                                     <tr>
+                                                                         <td><%=kullanicilar.get(i).getId()%></td>
+                                                                         <td><%=kullanicilar.get(i).getKullaniciAdi()%></td>
+                                                                         <td><%=kullanicilar.get(i).getKullaniciSifresi()%></td>
+                                                                         <td><%=kullanicilar.get(i).getKullaniciTelefonNo()%></td>
+                                                                         <td><%=kullanicilar.get(i).getKullaniciEmail()%></td>
+                                                                         <td><a href="DaireAta.jsp?id=<%=kullanicilar.get(i).getId()%>">Daire Ata</td>
+                                                                     </tr>
+                                                                    
+                                                                     <%
+                                                                    }
+                                       
+                                                                    
+           
+                                                                    
+                                                                    
+                                                                    
+                                                                %>
+                                                                
+                                                                
+                                                                
+                                                        </table>	
+								
 								</div>
 							</div>
-							<div class="wt-updatall">
-								<i class="ti-announcement"></i>
-								<span>Değişiklikleri kaydetmek için tıklayınız.</span>
-								<a class="wt-btn" href="javascript:void(0);">Kaydet</a>
-							</div>
+							
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
 							<div class="wt-haslayout wt-dbsectionspace wt-codescansidebar">

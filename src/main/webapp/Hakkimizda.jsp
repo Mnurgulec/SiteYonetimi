@@ -60,17 +60,16 @@
 										<div class="collapse navbar-collapse wt-navigation" id="navbarNav">
 											<ul class="navbar-nav">
 												<li class="menu-item-has-children page_item_has_children">
+													<li class="menu-item-has-children page_item_has_children">
 													<a href="Anasayfa.jsp">Ana Sayfa</a>
 													
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
-													<a href="Hakkimizda.jsp">Hakkımızda</a>
-													<ul class="sub-menu">
-														<li >
-															<a href="Duyurular.jsp">Duyurular</a>
-														</li>
-														
-													</ul>
+													<a href="Duyurular.jsp">Duyurular</a>
+													
+												</li>
+                                                                                            <li class="menu-item-has-children page_item_has_children">
+													<a href="Hakkimizda.jsp">Hakkımızda</a>	
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
 													<a href="Girisyap.jsp">Giriş Yap</a>
@@ -78,9 +77,6 @@
 														<li >
 															<a href="Girisyap.jsp">Giriş Yap</a>
 														</li>
-                                                                                                                <li >
-															<a href="Kaydol.jsp">Kayıt Ol</a>
-														</li> 
                                                                                                                 <li >
 															<a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
 														</li>

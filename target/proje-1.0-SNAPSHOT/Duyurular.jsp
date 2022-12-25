@@ -1,3 +1,6 @@
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="tumani.Duyurular"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -175,55 +178,55 @@
                                                                                 </div>
                                                                                 <!--Inner Home End-->
                                                                                 <!--Main Start-->
+                                                                     
                                                                                 <main id="wt-main" class="wt-main wt-haslayout wt-innerbgcolor">
                                                                                     <!--Categories Start-->
                                                                                     <div class="wt-haslayout wt-main-section">
                                                                                         <div class="container">
+                                                                                
                                                                                             <div class="row justify-content-md-center">
+                                                                                                                                 <%
+                                                                                    Duyurular d1=new Duyurular();
+                                                                                    ArrayList<Duyurular> duyuruID=d1.duyuruIDCek();
+                                                                                    ArrayList<Duyurular> duyuruBasligiCek=d1.duyuruBasligiCek();
+                                                                                    
+                                                                                    ArrayList<Duyurular> duyuruMetniCek=d1.duyuruMetniCek();
+                                                                                    
+                                                                                 for(int i=0;i<duyuruID.size();i++){%>
                                                                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left">
+                                                                                    
                                                                                                     <div class="wt-articletabshold wt-articlelist">
                                                                                                         <div class="tab-content wt-haslayout">
                                                                                                             <div class="wt-contentarticle tab-pane active fade show" id="alltab">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                                                                                                                         <div class="wt-article">
+                                                                                                                            
                                                                                                                             <figure>
                                                                                                                                 <img src="images/article/list/img-01.jpg" alt="img description">
                                                                                                                             </figure>
                                                                                                                             <div class="wt-articlecontent">
                                                                                                                                 <div class="wt-title">
                                                                                                                                     <h3>
-                                                                                                                                        <% try {
-                                                                                                                                            Class.forName("com.mysql.jdbc.Driver");
-                                                                                                                                            Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
-                                                                                                                                            Statement stmt = con.createStatement();
-                                                                                                                                            ResultSet rs = stmt.executeQuery("select * from `duyurular` where id=2");
-                                                                                                                                            while (rs.next()) {
-                                                                                                                                                out.println(rs.getString("duyuruBasligi"));
-                                                                                                                                            }
-                                                                                                                                            con.close();
-                                                                                                                                        } catch (Exception e) {
-                                                                                                                                            e.printStackTrace();
-                                                                                                                                        }
-                                                                                                                                        %></h3>
+                                                                                                                                        <%
+                                                                                                                                          out.println(duyuruID.get(i).getId());                           
+                                                                                                                                        %>
+                                                                                                                                    </h3>
                                                                                                                                 </div>
                                                                                                                                 <div class="wt-title">
-                                                                                                                                    <h2>
-                                                                                                                                        <% try {
-                                                                                                                                            Class.forName("com.mysql.jdbc.Driver");
-                                                                                                                                            Connection con = DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12", "grup12", "grup12");
-                                                                                                                                            Statement stmt = con.createStatement();
-                                                                                                                                            ResultSet rs = stmt.executeQuery("select * from `duyurular`  where id=2");
-                                                                                                                                            while (rs.next()) {
-                                                                                                                                                out.println(rs.getString("duyuruMetni"));
-                                                                                                                                            }
-                                                                                                                                            con.close();
-                                                                                                                                        } catch (Exception e) {
-                                                                                                                                            e.printStackTrace();
-                                                                                                                                        }
-                                                                                                                                        %></h2>
+                                                                                                                                    <h2><%
+                                                                                                                                          out.println(duyuruBasligiCek.get(i).getBaslik());
+                                                                                                                                           
+                                                                                                                                        %>
+                                                                                                                                       </h2>
                                                                                                                                 </div>
-                                                                                                                                
+                                                                                                                                <div class="wt-title">
+                                                                                                                                    <h2><%
+                                                                                                                                          out.println(duyuruMetniCek.get(i).getDuyuru());
+                                                                                                                                           
+                                                                                                                                        %>
+                                                                                                                                       </h2>
+                                                                                                                                </div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
@@ -232,14 +235,19 @@
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
+                                                                                                                                       
+                                                                                                                                 <%}
+
+
+                                                                                %>  
                                                                                                                                 
                                                                                             </div>
                                                                                                                                 
                                                                                         </div>
-                                                                                        <!--Limitless Experience End-->
+                                                                                       
                                                                                         
                                                                                 </main>
-                                                                                                                                
+                                                                                                                             
                                                                                 <!--Main End-->
                                                                                 <!--Footer Start-->
                                                                                 <footer id="wt-footer" class="wt-footer wt-haslayout">

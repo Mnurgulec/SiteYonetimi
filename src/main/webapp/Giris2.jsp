@@ -39,7 +39,7 @@
             obj.setKullaniciSifresi(sifre);
            
            
-            ArrayList<Kullanici> kullanici=k1.Yazdir(email,sifre);
+            ArrayList<Kullanici> kullanici=k1.dogrula(email,sifre);
             if(kullanici.size()>0){
                response.sendRedirect("Kullaniciprofili-k.jsp");
             }else{
@@ -47,7 +47,7 @@
              out.println("<script>window.location.href='Girisyap.jsp';</script>");
              }
         }
-        if(secim.equals("2"))
+        if(secim.equals("0"))
          {
 
             Yonetici y1=new Yonetici();

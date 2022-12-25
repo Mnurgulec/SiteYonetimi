@@ -64,13 +64,11 @@
 													
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
-													<a href="Hakkimizda.jsp">Hakkımızda</a>
-													<ul class="sub-menu">
-														<li >
-															<a href="Duyurular.jsp">Duyurular</a>
-														</li>
-														
-													</ul>
+													<a href="Duyurular.jsp">Duyurular</a>
+													
+												</li>
+                                                                                            <li class="menu-item-has-children page_item_has_children">
+													<a href="Hakkimizda.jsp">Hakkımızda</a>	
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
 													<a href="Girisyap.jsp">Giriş Yap</a>
@@ -78,9 +76,6 @@
 														<li >
 															<a href="Girisyap.jsp">Giriş Yap</a>
 														</li>
-                                                                                                                <li >
-															<a href="Kaydol.jsp">Kayıt Ol</a>
-														</li> 
                                                                                                                 <li >
 															<a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
 														</li>
@@ -197,7 +192,6 @@
 											<h3><a href="Kaydol.jsp">Kayıt Ol</a></h3>
 										</div>
 										<div class="wt-categoryslidup">
-											<a href="Kaydol.jsp">Kayıt olmak için tıklayınız. <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -208,7 +202,7 @@
 											<h3><a href="Uyebilgileri-k.html">Üye Bilgileri</a></h3>
 										</div>
 										<div class="wt-categoryslidup">
-											<a href="Uyebilgileri-k.html">Üye bilgileri sayfası için tıklayınız. <i class="fa fa-arrow-right"></i></a>
+											<a href="Uyebilgileri-k.jsp">Üye bilgileri sayfası için tıklayınız. <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -280,7 +274,7 @@
 										<li><a href="Hakkimizda.jsp">Hakkımızda</a></li>
 										<li><a href="Duyurular.jsp">Duyurular</a></li>
 										<li><a href="Ayarlar.jsp">Ayarlar</a></li>
-										<li><a href="Iletisim.html">İletişim</a></li>
+										<li><a href="Iletisim.jsp">İletişim</a></li>
 									</ul>
 								</div>
 							</div>

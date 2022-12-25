@@ -66,13 +66,11 @@
 													
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
-													<a href="Hakkimizda.jsp">Hakkımızda</a>
-													<ul class="sub-menu">
-														<li >
-															<a href="Duyurular.jsp">Duyurular</a>
-														</li>
-														
-													</ul>
+													<a href="Duyurular.jsp">Duyurular</a>
+													
+												</li>
+                                                                                            <li class="menu-item-has-children page_item_has_children">
+													<a href="Hakkimizda.jsp">Hakkımızda</a>	
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
 													<a href="Girisyap.jsp">Giriş Yap</a>
@@ -80,9 +78,6 @@
 														<li >
 															<a href="Girisyap.jsp">Giriş Yap</a>
 														</li>
-                                                                                                                <li >
-															<a href="Kaydol.jsp">Kayıt Ol</a>
-														</li> 
                                                                                                                 <li >
 															<a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
 														</li>
@@ -217,25 +212,6 @@
 											</form>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-							<div class="wt-haslayout wt-dbsectionspace wt-codescansidebar">
-								<div class="tg-authorcodescan wt-codescanholder">
-									
-									<div class="wt-codescanicons">
-										<span>TU-MANİ</span>
-										<ul class="wt-socialiconssimple">
-											<li class="wt-facebook"><a href="https://www.facebook.com/ostimteknikuniversitesi/"><i class="fa fa-facebook-f"></i></a></li>
-											<li class="wt-twitter"><a href="https://twitter.com/ostimteknikuniv?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a></li>
-											<li class="wt-youtube"><a href="https://www.youtube.com/channel/UCJr3uk1QO8ZsM-PiRI4-Oog"><i class="fab fa-youtube"></i></a></li>
-											<li class="wt-instagram"><a href="https://www.instagram.com/ostimteknikuniv/"><i class="fab fa-instagram"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="wt-companyad">
-									<figure class="wt-companyadimg"><img src="images/work/img-01.jpg" alt="img description"></figure>
 								</div>
 							</div>
 						</div>

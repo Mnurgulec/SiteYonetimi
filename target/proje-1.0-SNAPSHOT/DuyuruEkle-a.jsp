@@ -180,6 +180,9 @@
 											<form class="wt-formtheme wt-userform" action="DuyuruEkle2.jsp" method="post">
 											
 												<fieldset>
+                                                                                                         <div class="form-group form-disabeld">
+														<input type="text" name="duyuruID" class="form-control" placeholder="Duyuru numarasını giriniz">
+													</div>
 													<div class="form-group form-disabeld">
 														<input type="text" name="baslik" class="form-control" placeholder="Başlık giriniz">
 													</div>

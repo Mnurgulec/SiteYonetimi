@@ -16,10 +16,11 @@
 <body>
     <h1></h1>
     <%
+        int duyuruID=Integer.parseInt(request.getParameter("duyuruID"));
         String duyuruBaslik=request.getParameter("baslik");
         String duyuruMetin=request.getParameter("duyuru");
         Duyurular duyurular=new Duyurular();
-        boolean duyuru=duyurular.duyuruEkle(duyuruBaslik,duyuruMetin);
+        boolean duyuru=duyurular.duyuruEkle(duyuruID,duyuruBaslik,duyuruMetin);
          if(duyuru==true){
              out.println("<script>alert('Duyuru eklendi')</script>");
              out.println("<script>window.location.href='DuyuruEkle-a.jsp';</script>");

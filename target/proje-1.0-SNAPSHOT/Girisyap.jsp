@@ -4,6 +4,25 @@
 <!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%
+  Cookie[] cookies = request.getCookies();
+ String useremail = "";
+ String usersifre = "";
+ if (cookies != null) {
+  for (int i = 0; i < cookies.length; i++) {
+   Cookie cookie = cookies[i];
+   if (cookie.getName().equals("email-cookie")) {
+  useremail = cookie.getValue();
+   } else if (cookie.getName().equals("password-cookie")) {
+  usersifre = cookie.getValue();
+   }
+  }
+ }
+ %>    
+    
+    
+    
+    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,20 +78,19 @@
                                                                                                                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                                                                                                             <i class="lnr lnr-menu"></i>
                                                                                                                         </button>
-                                                                                                                      <div class="collapse navbar-collapse wt-navigation" id="navbarNav">
-											<ul class="navbar-nav">
-												<li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <div class="collapse navbar-collapse wt-navigation" id="navbarNav">
+                                                                                                                            <ul class="navbar-nav">
+                                                                                                                                <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <li class="menu-item-has-children page_item_has_children">
 													<a href="Anasayfa.jsp">Ana Sayfa</a>
 													
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
-													<a href="Hakkimizda.jsp">Hakkımızda</a>
-													<ul class="sub-menu">
-														<li >
-															<a href="Duyurular.jsp">Duyurular</a>
-														</li>
-														
-													</ul>
+													<a href="Duyurular.jsp">Duyurular</a>
+													
+												</li>
+                                                                                            <li class="menu-item-has-children page_item_has_children">
+													<a href="Hakkimizda.jsp">Hakkımızda</a>	
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
 													<a href="Girisyap.jsp">Giriş Yap</a>
@@ -80,9 +98,6 @@
 														<li >
 															<a href="Girisyap.jsp">Giriş Yap</a>
 														</li>
-                                                                                                                <li >
-															<a href="Kaydol.jsp">Kayıt Ol</a>
-														</li> 
                                                                                                                 <li >
 															<a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
 														</li>
@@ -108,7 +123,8 @@
 										<div class="wt-username">
 											<h3>TU-MANİ</h3>
 											<a href="Ayarlar.jsp">Ayarlar</a>
-                                                                                                                                   
+                                                                                                                                    </a>
+                                                                                                                                </li>
                                                                                                                             </ul>
                                                                                                                         </nav>
                                                                                                                     </div>
@@ -205,14 +221,21 @@
                                                                                                                                     <option value="0">Yönetici Girişi</option>
                                                                                                                                     <option value="1">Kullanıcı Girişi</option>
                                                                                                                                 </select>
+                                                                                                                                 
                                                                                                                                 <fieldset>
                                                                                                                                     <div class="form-group form-group-half">
-                                                                                                                                        <input type="text" name="email" class="form-control" placeholder="Emailinizi giriniz.">
+                                                                                                                                        <input type="text" name="email" class="form-control" placeholder="Emailinizi giriniz." value="<%=useremail%>">
                                                                                                                                     </div>
                                                                                                                                     <div class="form-group form-group-half">
-                                                                                                                                        <input type="text" name="sifre" class="form-control" placeholder="Şifrenizi giriniz.">
+                                                                                                                                        <input type="password" name="sifre" class="form-control" placeholder="Şifrenizi giriniz." value="<%=usersifre%>">
                                                                                                                                     </div>
+                                                                                                                                     
+                                                                                                                          
                                                                                                                                 </fieldset>
+                                                                                                                                    <div class="wt-updatall">
+                                                                                                                                        <input type="checkbox" name="rememberMe" value="" class="">Beni Hatırla
+                                                                                                                                    </div>
+                                                                                                                             
                                                                                                                                 <div class="wt-updatall">
                                                                                                                                     <i class="ti-announcement"></i>
                                                                                                                                     <span>Giriş Yap</span>
