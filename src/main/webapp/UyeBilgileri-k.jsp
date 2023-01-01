@@ -1,11 +1,11 @@
-<%@page import="tumani.Daireler"%>
+<% 
+if(session.getAttribute("yoneticiEmail")!=null){
+    response.sendRedirect("Girisyap.jsp");
+}
+%>
 <%@page import="tumani.Kullanici"%>
 <!doctype html>
-<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
-    <jsp:useBean id="obj" class="tumani.Kullanici" scope="session"/>
+<jsp:useBean id="obj" class="tumani.Kullanici" scope="session"/>
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <head>
         <meta charset="utf-8">
@@ -54,8 +54,19 @@
                                                                                                     <div class="container-fluid">
                                                                                                         <div class="row">
                                                                                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                                                                                <strong class="wt-logo"><a href="index-2.html"><img src="images/14.png" alt="company logo here"></a></strong>
                                                                                                                 <form class="wt-formtheme wt-formbanner wt-formbannervtwo">
+                                                                                                                    <style>
+                                                                                                                        p.tumanu {
+                                                                                                                            font-family: "Brush Script MT", cursive;
+                                                                                                                            font-size: 200%;
+                                                                                                                            color:#800000;
+                                                                                                                        }
+
+                                                                                                                    </style>
+                                                                                                                    </head>
+                                                                                                                    <body>
+
+                                                                                                                        <br><p class="tumanu">Tu-Mani</p>
                                                                                                                 </form>
                                                                                                                 <div class="wt-rightarea">
                                                                                                                     <nav id="wt-nav" class="wt-nav navbar-expand-lg">
@@ -65,54 +76,29 @@
                                                                                                                         <div class="collapse navbar-collapse wt-navigation" id="navbarNav">
                                                                                                                             <ul class="navbar-nav">
                                                                                                                                 <li class="menu-item-has-children page_item_has_children">
-                                                                                                                                    <a href="Anasayfa-k.jsp">Ana Sayfa</a>
-
-                                                                                                                                </li>
-                                                                                                                                <li class="menu-item-has-children page_item_has_children">
                                                                                                                                     <a href="Duyurular.jsp">Duyurular</a>
                                                                                                                                 </li>
                                                                                                                                 <li class="menu-item-has-children page_item_has_children">
-                                                                                                                                    <a href=Hakkimizda.jsp">Hakkımızda</a>
+                                                                                                                                    <a href=Uyebilgileri-k.jsp">Üye Bilgileri</a>
+
+                                                                                                                                </li><!-- comment -->
+                                                                                                                                <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <a href="Kullaniciprofili-k.jsp">Kişi Bilgileri</a>
 
                                                                                                                                 </li>
                                                                                                                                 <li class="menu-item-has-children page_item_has_children">
-                                                                                                                                    <a href="">Kullanıcı Bilgisi</a>
-                                                                                                                                    <ul class="sub-menu">
-                                                                                                                                        <li >
-                                                                                                                                            <a href="Uyebilgileri-k.jsp">Üye Bilgileri</a>
-                                                                                                                                        </li>
-                                                                                                                                        <li >
-                                                                                                                                            <a href="Kullaniciprofili-k.jsp">Kişi Bilgileri</a>
-                                                                                                                                        </li>
-                                                                                                                                        <li >
-                                                                                                                                            <a href="Giderlertakvimi-k.jsp">Giderler Takvimi</a>
-                                                                                                                                        </li>
+                                                                                                                                    <a href=Giderlertakvimi-k.jsp">Giderler Takvimi</a>
 
-                                                                                                                                    </ul>
+                                                                                                                                </li><li >
+                                                                                                                                    <a href="CikisYap.jsp">Çıkış Yap</a>
                                                                                                                                 </li>
 
-                                                                                                                                <li class="menu-item-has-children page_item_has_children">
-                                                                                                                                    <a href="Iletisim.jsp">İletişim</a>
-
-                                                                                                                                </li>
-                                                                                                                                <li class="menu-item-has-children page_item_has_children">
-                                                                                                                                    <a href="Girisyap.jsp">Giriş Yap</a>
-                                                                                                                                    <ul class="sub-menu">
-                                                                                                                                        <li >
-                                                                                                                                            <a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
-                                                                                                                                        </li>
-                                                                                                                                        <li >
-                                                                                                                                            <a href="CikisYap.jsp">Çıkış Yap</a>
-                                                                                                                                        </li>
-                                                                                                                                    </ul>
-                                                                                                                                </li>   
                                                                                                                                 <div class="wt-userlogedin">
                                                                                                                                     <figure class="wt-userimg">
                                                                                                                                         <img src="images/save-2.png" alt="image description">
                                                                                                                                     </figure>
                                                                                                                                     <div class="wt-username">
                                                                                                                                         <h3>TU-MANİ</h3>
-                                                                                                                                        <a href="Ayarlar.jsp">Ayarlar</a>
 
                                                                                                                                     </div>
                                                                                                                                 </div>
@@ -122,185 +108,169 @@
                                                                                                             </header>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                               
-                                                                                    <!--Header End-->
-                                                                                    <!--Main Start-->
-                                                                                    <main id="wt-main" class="wt-main wt-haslayout">
-                                                                                        <!--Sidebar Start-->
-                                                                                        <div id="wt-sidebarwrapper" class="wt-sidebarwrapper">
-                                                                                            <div id="wt-btnmenutoggle" class="wt-btnmenutoggle">
-                                                                                                <span class="menu-icon">
-                                                                                                    <em></em>
-                                                                                                    <em></em>
-                                                                                                    <em></em>
-                                                                                                </span>
-                                                                                            </div>
-                                                                                            <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
-                                                                                                <div class="wt-companysdetails wt-usersidebar">
-                                                                                                    <figure class="wt-companysimg">
-                                                                                                        <img src="images/sidebar/img-01.jpg" alt="img description">
-                                                                                                    </figure>
-                                                                                                    <div class="wt-companysinfo">
-                                                                                                        <figure><img src="images/sidebar/3.jpg" alt="img description"></figure>
-                                                                                                        <div class="wt-title">
-                                                                                                            <h2><a href="javascript:void(0);">İsim</a></h2>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <nav id="wt-navdashboard" class="wt-navdashboard">
-                                                                                                    <ul>
-                                                                                                        <li class="menu-item-has-children">
-                                                                                                            <a href="javascript:void(0);">
-                                                                                                                <i class="ti-dashboard"></i>
-                                                                                                                <span>Giderler</span>
-                                                                                                            </a>
-                                                                                                            <ul class="sub-menu">
-                                                                                                                <li><hr><a href="Giderlertakvimi-k.jsp">Giderler Takvimi</a></li>
-                                                                                                            </ul>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="Uyebilgileri-k.jsp">
-                                                                                                                <i class="ti-briefcase"></i>
-                                                                                                                <span>Profil</span>
-                                                                                                            </a>
-                                                                                                        </li>
 
-                                                                                                        <li>
-                                                                                                            <a href="Iletisim.jsp">
-                                                                                                                <i class="ti-tag"></i>
-                                                                                                                <span>İletişim</span>
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="Anasayfa.jsp">
-                                                                                                                <i class="ti-shift-right"></i>
-                                                                                                                <span>Ana Sayfa</span>
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                </nav>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <!--Sidebar Start-->
-                                                                                        <!--Register Form Start-->
-                                                                                        <section class="wt-haslayout">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
-                                                                                                    <div class="wt-haslayout wt-dbsectionspace">
-                                                                                                        <div class="wt-dashboardbox wt-dashboardtabsholder">
-                                                                                                            <div class="wt-dashboardboxtitle">
-                                                                                                                <h2>Profil</h2>
+                                                                                                    <!--Header End-->
+                                                                                                    <!--Main Start-->
+                                                                                                    <main id="wt-main" class="wt-main wt-haslayout">
+                                                                                                        <!--Sidebar Start-->
+                                                                                                        <div id="wt-sidebarwrapper" class="wt-sidebarwrapper">
+                                                                                                            <div id="wt-btnmenutoggle" class="wt-btnmenutoggle">
+                                                                                                                <span class="menu-icon">
+                                                                                                                    <em></em>
+                                                                                                                    <em></em>
+                                                                                                                    <em></em>
+                                                                                                                </span>
                                                                                                             </div>
-                                                                                                            <div class="wt-dashboardtabs">
-                                                                                                                <ul class="wt-tabstitle nav navbar-nav">
-                                                                                                                    <li class="nav-item">
-                                                                                                                        <a class="active" data-toggle="tab" href="#wt-skills">Kişisel Özellikler ve Detaylar</a>
-                                                                                                                    </li>
-                                                                                                                </ul>
-                                                                                                            </div>
-                                                                                                            <div class="wt-tabscontent tab-content">
-                                                                                                                <div class="wt-personalskillshold tab-pane active fade show" id="wt-skills">
-                                                                                                                    <div class="wt-yourdetails wt-tabsinfo">
-                                                                                                                        <div class="wt-tabscontenttitle">
-                                                                                                                            <h2>Detaylar</h2>
+                                                                                                            <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
+                                                                                                                <div class="wt-companysdetails wt-usersidebar">
+                                                                                                                    <figure class="wt-companysimg">
+                                                                                                                        <img src="images/sidebar/img-01.jpg" alt="img description">
+                                                                                                                    </figure>
+                                                                                                                    <div class="wt-companysinfo">
+                                                                                                                        <figure><img src="images/sidebar/3.jpg" alt="img description"></figure>
+                                                                                                                        <div class="wt-title">
+                                                                                                                            <h2><a href="javascript:void(0);"></a></h2>
                                                                                                                         </div>
-                                                                                                                        <form class="wt-formtheme wt-userform">
-                                                                                                                            <fieldset>
-                                                                                                                                <div class="form-group form-group-half">
-                                                                                                                                    <button  name="ad" class="form-control" placeholder=""><%
-                                                                                                                            Kullanici k1 = new Kullanici();
-                                                                                                                            out.println(k1.kullaniciAdiCek(obj.getKullaniciEmail()));%> </button>
-                                                                                                                                </div>
-                                                                                                                                <div class="form-group form-group-half">
-                                                                                                                                    <button  name="ad" class="form-control" placeholder=""><%
-                                                                                                                            Kullanici k2 = new Kullanici();
-                                                                                                                            out.println(k2.sifreCek(obj.getKullaniciEmail()));%> </button>
-                                                                                                                                </div>
-                                                                                                                                <div class="form-group form-group-half">
-                                                                                                                                    <button  name="ad" class="form-control" placeholder=""><%
-                                                                                                                            Kullanici k3 = new Kullanici();
-                                                                                                                            out.println(k3.TelefonNoCek(obj.getKullaniciEmail()));%> </button>
-                                                                                                                                </div>
-                                                                                                                                <div class="form-group form-group-half">
-                                                                                                                                    <button  name="ad" class="form-control" placeholder=""><%
-                                                                                                                            Kullanici k4 = new Kullanici();
-                                                                                                                            out.println(k4.emailCek(obj.getKullaniciEmail()));%> </button>
-                                                                                                                                </div>
-                                                                                                                                <div class="form-group form-group-half">
-                                                                                                                                    <button  name="ad" class="form-control" placeholder="">
-                                                                                                                                        <%
-                                                                                                                                            Daireler d1 = new Daireler();
-                                                                                                                                            out.println(d1.katCek(obj.getKullaniciEmail()) + " " + ".Kat");
-                                                                                                                                            out.println(d1.daireNoCek(obj.getKullaniciEmail()) + " " + "Nolu Daire");
-                                                                                                                                        %> 
-
-
-                                                                                                                                    </button>
-                                                                                                                                </div>
-                                                                                                                            </fieldset>
-                                                                                                                        </form>
                                                                                                                     </div>
                                                                                                                 </div>
+                                                                                                                <nav id="wt-navdashboard" class="wt-navdashboard">
+                                                                                                                    <ul>
+                                                                                                                        <li>
+                                                                                                                            <a href="Iletisim.jsp">
+                                                                                                                                <i class="ti-tag"></i>
+                                                                                                                                <span>İletişim</span>
+                                                                                                                            </a>
+                                                                                                                        </li>
+                                                                                                                        <li>
+                                                                                                                            <a href="index.jsp">
+                                                                                                                                <i class="ti-shift-right"></i>
+                                                                                                                                <span>Ana Sayfa</span>
+                                                                                                                            </a>
+                                                                                                                        </li>
+                                                                                                                    </ul>
+                                                                                                                </nav>
                                                                                                             </div>
                                                                                                         </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                                                                                                    <div class="wt-haslayout wt-dbsectionspace wt-codescansidebar">
-                                                                                                        <div class="tg-authorcodescan wt-codescanholder">
+                                                                                                        <!--Sidebar Start-->
+                                                                                                        <!--Register Form Start-->
+                                                                                                        <section class="wt-haslayout">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
+                                                                                                                    <div class="wt-haslayout wt-dbsectionspace">
+                                                                                                                        <div class="wt-dashboardbox wt-dashboardtabsholder">
+                                                                                                                            <div class="wt-dashboardboxtitle">
+                                                                                                                                <h2>Profil</h2>
+                                                                                                                            </div>
+                                                                                                                            <div class="wt-dashboardtabs">
+                                                                                                                                <ul class="wt-tabstitle nav navbar-nav">
+                                                                                                                                    <li class="nav-item">
+                                                                                                                                        <a class="active" data-toggle="tab" href="#wt-skills">Kişisel Özellikler ve Detaylar</a>
+                                                                                                                                    </li>
+                                                                                                                                </ul>
+                                                                                                                            </div>
+                                                                                                                            <div class="wt-tabscontent tab-content">
+                                                                                                                                <div class="wt-personalskillshold tab-pane active fade show" id="wt-skills">
+                                                                                                                                    <div class="wt-yourdetails wt-tabsinfo">
+                                                                                                                                        <div class="wt-tabscontenttitle">
+                                                                                                                                            <h2>Detaylar</h2>
+                                                                                                                                        </div>
+                                                                                                                                        <form class="wt-formtheme wt-userform">
+                                                                                                                                            <fieldset>
+                                                                                                                                                <div class="form-group form-group-half">
+                                                                                                                                                        <button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                                        Kullanici k1 = new Kullanici();
+                                                                                                                                        out.println(k1.kullaniciAdiCek(obj.getKullaniciEmail()));%> </button>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="form-group form-group-half">
+                                                                                                                                                        <button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                                        Kullanici k2 = new Kullanici();
+                                                                                                                                        out.println(k2.sifreCek(obj.getKullaniciEmail()));%> </button>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="form-group form-group-half">
+                                                                                                                                                        <button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                                        Kullanici k3 = new Kullanici();
+                                                                                                                                        out.println(k3.TelefonNoCek(obj.getKullaniciEmail()));%> </button>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="form-group form-group-half">
+                                                                                                                                                        <button  name="ad" class="form-control" placeholder=""><%
+                                                                                                                                        Kullanici k4 = new Kullanici();
+                                                                                                                                        out.println(k4.emailCek(obj.getKullaniciEmail()));%> </button>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="form-group form-group-half">
+                                                                                                                                                    <button  name="ad" class="form-control" placeholder="">
+                                                                                                                                                        <%
+                                                                                                                                                            Daireler d1 = new Daireler();
+                                                                                                                                                            out.println(d1.katCek(obj.getKullaniciEmail()) + " " + ".Kat");
+                                                                                                                                                            out.println(d1.daireNoCek(obj.getKullaniciEmail()) + " " + "Nolu Daire");
+                                                                                                                                                        %> 
 
-                                                                                                            <div class="wt-codescanicons">
-                                                                                                                <span>TU-MANİ</span>
-                                                                                                                <ul class="wt-socialiconssimple">
-                                                                                                                    <li class="wt-facebook"><a href="https://www.facebook.com/ostimteknikuniversitesi/"><i class="fa fa-facebook-f"></i></a></li>
-                                                                                                                    <li class="wt-twitter"><a href="https://twitter.com/ostimteknikuniv?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a></li>
-                                                                                                                    <li class="wt-youtube"><a href="https://www.youtube.com/channel/UCJr3uk1QO8ZsM-PiRI4-Oog"><i class="fab fa-youtube"></i></a></li>
-                                                                                                                    <li class="wt-instagram"><a href="https://www.instagram.com/ostimteknikuniv/"><i class="fab fa-instagram"></i></a></li>
-                                                                                                                </ul>
+
+                                                                                                                                                    </button>
+                                                                                                                                                </div>
+                                                                                                                                            </fieldset>
+                                                                                                                                        </form>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                                                                                                    <div class="wt-haslayout wt-dbsectionspace wt-codescansidebar">
+                                                                                                                        <div class="tg-authorcodescan wt-codescanholder">
+
+                                                                                                                            <div class="wt-codescanicons">
+                                                                                                                                <span>TU-MANİ</span>
+                                                                                                                                <ul class="wt-socialiconssimple">
+                                                                                                                                    <li class="wt-facebook"><a href="https://www.facebook.com/ostimteknikuniversitesi/"><i class="fa fa-facebook-f"></i></a></li>
+                                                                                                                                    <li class="wt-twitter"><a href="https://twitter.com/ostimteknikuniv?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a></li>
+                                                                                                                                    <li class="wt-youtube"><a href="https://www.youtube.com/channel/UCJr3uk1QO8ZsM-PiRI4-Oog"><i class="fab fa-youtube"></i></a></li>
+                                                                                                                                    <li class="wt-instagram"><a href="https://www.instagram.com/ostimteknikuniv/"><i class="fab fa-instagram"></i></a></li>
+                                                                                                                                </ul>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        <div class="wt-companyad">
+                                                                                                                            <figure class="wt-companyadimg"><img src="images/work/img-01.jpg" alt="img description"></figure>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3"></div>
+
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <div class="wt-companyad">
-                                                                                                            <figure class="wt-companyadimg"><img src="images/work/img-01.jpg" alt="img description"></figure>
-                                                                                                        </div>
-                                                                                                    </div>
+                                                                                                        </section>
+                                                                                                        <!--Register Form End-->
+                                                                                                    </main>
+                                                                                                    <!--Main End-->	
                                                                                                 </div>
-                                                                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3"></div>
-
-                                                                                            </div>
-                                                                                        </section>
-                                                                                        <!--Register Form End-->
-                                                                                    </main>
-                                                                                    <!--Main End-->	
-                                                                                    </div>
-                                                                                    <!--Content Wrapper End-->
-                                                                                    </div>
-                                                                                    <!--Wrapper End-->
-                                                                                    <script src="js/vendor/jquery-3.3.1.js"></script>
-                                                                                    <script src="js/vendor/jquery-library.js"></script>
-                                                                                    <script src="js/vendor/bootstrap.min.js"></script>
-                                                                                    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>
-                                                                                    <script src="js/owl.carousel.min.js"></script>
-                                                                                    <script src="js/jquery.sortable.js"></script>
-                                                                                    <script src="js/chosen.jquery.js"></script>
-                                                                                    <script src="js/tilt.jquery.js"></script>
-                                                                                    <script src="js/scrollbar.min.js"></script>
-                                                                                    <script src="js/prettyPhoto.js"></script>
-                                                                                    <script src="js/jquery-ui.js"></script>
-                                                                                    <script src="js/readmore.js"></script>
-                                                                                    <script src="js/countTo.js"></script>
-                                                                                    <script src="js/appear.js"></script>
-                                                                                    <script src="js/tipso.js"></script>
-                                                                                    <script src="js/gmap3.js"></script>
-                                                                                    <script src="js/jRate.js"></script>
-                                                                                    <script src="js/main.js"></script>
-                                                                                    <script>
-                                                                                        const menu_icon = document.querySelector('.menu-icon');
-                                                                                        function addClassFunThree() {
-                                                                                            this.classList.toggle("click-menu-icon");
-                                                                                        }
-                                                                                        menu_icon.addEventListener('click', addClassFunThree);
-                                                                                    </script>
-                                                                                    </body>
+                                                                                                <!--Content Wrapper End-->
+                                                                                        </div>
+                                                                                        <!--Wrapper End-->
+                                                                                        <script src="js/vendor/jquery-3.3.1.js"></script>
+                                                                                        <script src="js/vendor/jquery-library.js"></script>
+                                                                                        <script src="js/vendor/bootstrap.min.js"></script>
+                                                                                        <script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>
+                                                                                        <script src="js/owl.carousel.min.js"></script>
+                                                                                        <script src="js/jquery.sortable.js"></script>
+                                                                                        <script src="js/chosen.jquery.js"></script>
+                                                                                        <script src="js/tilt.jquery.js"></script>
+                                                                                        <script src="js/scrollbar.min.js"></script>
+                                                                                        <script src="js/prettyPhoto.js"></script>
+                                                                                        <script src="js/jquery-ui.js"></script>
+                                                                                        <script src="js/readmore.js"></script>
+                                                                                        <script src="js/countTo.js"></script>
+                                                                                        <script src="js/appear.js"></script>
+                                                                                        <script src="js/tipso.js"></script>
+                                                                                        <script src="js/gmap3.js"></script>
+                                                                                        <script src="js/jRate.js"></script>
+                                                                                        <script src="js/main.js"></script>
+                                                                                        <script>
+                                                                                            const menu_icon = document.querySelector('.menu-icon');
+                                                                                            function addClassFunThree() {
+                                                                                                this.classList.toggle("click-menu-icon");
+                                                                                            }
+                                                                                            menu_icon.addEventListener('click', addClassFunThree);
+                                                                                        </script>
+                                                                                        </body>
 
 
-                                                                                    </html>
+                                                                                        </html>

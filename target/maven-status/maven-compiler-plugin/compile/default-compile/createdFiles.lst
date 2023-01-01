@@ -1,4 +1,7 @@
-tumani\SifreYenileme.class
 tumani\Yonetici.class
+tumani\BorcEkleme.class
+tumani\kullaniciBorcEkle.class
 tumani\Borclar.class
+tumani\DaireAtama.class
+tumani\Duyurular.class
 tumani\Kullanici.class

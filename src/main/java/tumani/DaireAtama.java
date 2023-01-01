@@ -16,30 +16,33 @@ import java.sql.Statement;
  */
 public class DaireAtama {
 
-    /**
-     * @param args the command line arguments
-     */public boolean daireNoAta(int id,int daireNo,int katNo){
+   public boolean daireNoAta(int id,int katNo,int daireNo){
          boolean  atadimi=false;
           try{
-            PreparedStatement preparedStatement;
+             PreparedStatement ps;
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
-             Statement st=con.createStatement();
-             ResultSet rs=st.executeQuery("SELECT *FROM daireler WHERE kullaniciID='"+id+"'");
+             String sql="SELECT daireNo FROM kullanici WHERE daireNo=?";
+             ps= con.prepareStatement(sql);
+            ps.setInt(1, daireNo);
+           ResultSet rs = ps.executeQuery();
+           System.out.println(sql);
              if(!rs.next()){
-                  String sql="INSERT INTO daireler(kullaniciID, kat, daireNo) VALUES('" + id + "','" + katNo + "','" + daireNo +"')";
-                  st.execute(sql); 
-                 atadimi=true;
+                  String query="UPDATE kullanici SET katNo=? , daireNo=? WHERE id=?";
+                    ps = con.prepareStatement(query);                 
+                    ps.setInt(1, katNo);
+                    ps.setInt(2, daireNo);
+                    ps.setInt(3, id);
+
+                    ps.executeUpdate();
+                    atadimi=true;
              }
-
-
-        }catch(Exception e){
+                                                                       
+       
+        }catch(Exception e){            
              System.out.println(e);
-
+        
         }
-        return atadimi;
-    }
-    public static void main(String args[]) {
-        // TODO code application logic here
+        return atadimi;   
     }
 }

@@ -1,11 +1,18 @@
+
 <%@page import="tumani.Yonetici"%>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
-    <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <jsp:useBean id="yn" class="tumani.Yonetici" scope="session"/>
+    <% 
+if(session.getAttribute("kullaniciEmail")!=null){
+    response.sendRedirect("Girisyap.jsp");
+}
+%>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>   
+   <% String email=(String)session.getAttribute("yoneticiEmail");%>
+    <%request.setCharacterEncoding("utf-8");%>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,14 +51,25 @@
                                                                         <div id="wt-wrapper" class="wt-wrapper wt-haslayout">
                                                                             <!-- Content Wrapper Start -->
                                                                             <div class="wt-contentwrapper">
-                                                                                 <!-- Header Start -->
+                                                                                <!-- Header Start -->
                                                                                 <header id="wt-header" class="wt-header wt-headervtwo wt-haslayout">
                                                                                     <div class="wt-navigationarea">
                                                                                         <div class="container-fluid">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                                                                    <strong class="wt-logo"><a href="index-2.html"><img src="images/14.png" alt="company logo here"></a></strong>
                                                                                                     <form class="wt-formtheme wt-formbanner wt-formbannervtwo">
+                                                                                                        <style>
+                                                                                                            p.tumanu {
+                                                                                                                font-family: "Brush Script MT", cursive;
+                                                                                                                font-size: 200%;
+                                                                                                                color:#800000;
+                                                                                                            }
+
+                                                                                                        </style>
+                                                                                                        </head>
+                                                                                                        <body>
+
+                                                                                                            <br><p class="tumanu">Tu-Mani</p>
                                                                                                     </form>
                                                                                                     <div class="wt-rightarea">
                                                                                                         <nav id="wt-nav" class="wt-nav navbar-expand-lg">
@@ -61,61 +79,30 @@
                                                                                                             <div class="collapse navbar-collapse wt-navigation" id="navbarNav">
                                                                                                                 <ul class="navbar-nav">
                                                                                                                     <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Anasayfa-a.jsp">Ana Sayfa</a>
-
+                                                                                                                        <a href="Duyurular-a.jsp">Duyurular</a>
                                                                                                                     </li>
                                                                                                                     <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Duyurular.jsp">Duyurular</a>
-                                                                                                                    </li>
-                                                                                                                     <li class="menu-item-has-children page_item_has_children">
                                                                                                                         <a href="DuyuruEkle-a.jsp">Duyuru Ekle</a>
                                                                                                                     </li>
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href=Hakkimizda.jsp">Hakkımızda</a>
-
+                                                                                                                     <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="Kaydol.jsp">Kullanıcı Kaydet</a>
                                                                                                                     </li>
                                                                                                                     <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="">Kullanıcı Bilgisi</a>
-                                                                                                                        <ul class="sub-menu">
-                                                                                                                            <li >
-                                                                                                                                <a href="Uyebilgileri-a.jsp">Üye Bilgileri</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="Kullaniciprofili-a.jsp">Kişi Bilgileri</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="Giderlertakvimi-a.jsp">Giderler Takvimi</a>
-                                                                                                                            </li>
-
-                                                                                                                        </ul>
-                                                                                                                    </li>
-                                                                                                                    </li>
-
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Iletisim.jsp">İletişim</a>
-
+                                                                                                                        <a href="Uyebilgileri-a.jsp">Üye Bilgileri</a>
                                                                                                                     </li>
                                                                                                                     <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Girisyap.jsp">Giriş Yap</a>
-                                                                                                                        <ul class="sub-menu">
-                                                                                                                            <li >
-                                                                                                                                <a href="Kaydol.jsp">Kayıt Ol</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="CikisYap.jsp">Çıkış Yap</a>
-                                                                                                                            </li>
-                                                                                                                        </ul>
-                                                                                                                    </li>   
+                                                                                                                        <a href="Giderlertakvimi-a.jsp">Giderler Takvimi</a>
+                                                                                                                    </li>
+                                                                                                                    <li class="menu-item-has-children page_item_has_children">
+                                                                                                                        <a href="CikisYap.jsp">Çıkış Yap</a>
+
+                                                                                                                    </li>    
                                                                                                                     <div class="wt-userlogedin">
                                                                                                                         <figure class="wt-userimg">
                                                                                                                             <img src="images/save-2.png" alt="image description">
                                                                                                                         </figure>
                                                                                                                         <div class="wt-username">
                                                                                                                             <h3>TU-MANİ</h3>
-                                                                                                                            <a href="Ayarlar.jsp">Ayarlar</a>
 
                                                                                                                         </div>
                                                                                                                     </div>
@@ -124,152 +111,125 @@
                                                                                                 </div>
                                                                                                 </header>
                                                                                             </div>
-                                                                                            </ul>
-                                                                                            </nav>
                                                                                         </div>
-                                                                                    </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        </header>
-                                                                        <!--Header End-->
-                                                                        <!--Inner Home Banner Start-->
-                                                                        <div class="wt-haslayout wt-innerbannerholder wt-innerbannerholdervtwo">
-                                                                            <div class="container">
-                                                                                <div class="row justify-content-md-center">
-                                                                                    <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--Inner Home End-->
-                                                                        <!--Main Start-->
-                                                                        <main id="wt-main" class="wt-main wt-haslayout wt-innerbgcolor">
-                                                                            <!-- User Profile Start-->
-                                                                            <div class="wt-main-section wt-paddingtopnull wt-haslayout">
-                                                                                <div class="container">
-                                                                                    <div class="row">	
-                                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left">
-                                                                                            <div class="wt-userprofileholder">
-                                                                                                <FORM enctype="multipart/form-data" action="DosyaYukle.jsp" method=POST>
+                                                                                        <!--Inner Home Banner Start-->
+                                                                                        <div class="wt-haslayout wt-innerbannerholder">
+                                                                                            <div class="container">
+                                                                                                <div class="row justify-content-md-center">
+                                                                                                    <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--Inner Home End-->
+                                                                                        <!--Main Start-->
+                                                                                        <main id="wt-main" class="wt-main wt-haslayout wt-innerbgcolor">
+                                                                                            <!-- User Profile Start-->
+                                                                                            <div class="wt-main-section wt-paddingtopnull wt-haslayout">
+                                                                                                <div class="container">
+                                                                                                    <div class="row">	
+                                                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left">
+                                                                                                            <div class="wt-userprofileholder">
 
-                                                                                                    <b>Dosya Seçin</b>
-                                                                                                    <INPUT name="file" type="file">
+                                                                                                                <span class="wt-featuredtag"></span>
+                                                                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 float-left">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="wt-userprofile">
 
-                                                                                                    <input type="submit" value="Dosyayı Gönder">
-
-                                                                                                </FORM>
-                                                                                                <span class="wt-featuredtag"><img src="images/featured.png" alt="img description" data-tipso="Plus Member" class="template-content tipso_style"></span>
-                                                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 float-left">
-                                                                                                    <div class="row">
-                                                                                                        <div class="wt-userprofile">
-                                                                                                            <figure>
-                                                                                                                <img src="images/profile/img-01.jpg" alt="img description">
-                                                                                                                    <div class="wt-userdropdown wt-online">
+                                                                                                                            <div class="wt-title">
+                                                                                                                                <h3><i class="fa fa-check-circle"></i>  <%
+                                                                                                                                    Yonetici y1 = new Yonetici();
+                                                                                                                                    out.println(y1.kullaniciAdiCek(email));%></h3>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
-                                                                                                            </figure>
-                                                                                                            <div class="wt-title">
-                                                                                                                <h3><i class="fa fa-check-circle"></i>  <%
-                                                                                                                    Yonetici y1 = new Yonetici();
-                                                                                                                    out.println(y1.kullaniciAdiCek(yn.getEmail()));%></h3>
+                                                                                                                </div>
+                                                                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 float-left">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="wt-proposalhead wt-userdetails">
+                                                                                                                            <h2>Site Yöneticisi</h2>
+                                                                                                                            <div class="">
+                                                                                                                                <p>Email:<%
+                                                                                                                                    out.println(" " + email);
+                                                                                                                                    %></p>
+                                                                                                                                <p>Şifre:
+                                                                                                                                    <%
+                                                                                                                                        Yonetici y3 = new Yonetici();
+                                                                                                                                        out.println(y3.sifreCek(email));
+                                                                                                                                    %></p>
+                                                                                                                                <p>Telefon Numarası:
+                                                                                                                                    <%
+                                                                                                                                        Yonetici y2 = new Yonetici();
+                                                                                                                                        out.println(y2.TelefonNoCek(email));
+                                                                                                                                    %></p>
+                                                                                                                                <p>Adres:
+                                                                                                                                    <%
+                                                                                                                                        Yonetici y4 = new Yonetici();
+                                                                                                                                        out.println(y4.AdresCek(email));
+                                                                                                                                    %></p>
+
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 float-left">
+                                                                                                <!-- User Profile End-->
+                                                                                            </div>
+                                                                                        </main>
+                                                                                        <!--Main End-->
+                                                                                        <!--Footer Start-->
+                                                                                        <footer id="wt-footer" class="wt-footer wt-haslayout">
+                                                                                            <div class="wt-footerholder wt-haslayout">
+                                                                                                <div class="container">
                                                                                                     <div class="row">
-                                                                                                        <div class="wt-proposalhead wt-userdetails">
-                                                                                                            <h2>Site Yöneticisi</h2>
-                                                                                                            <div class="">
-                                                                                                                <p>Email:<%
-                                                                                                                    out.println(" " + yn.getEmail());
-                                                                                                                    %></p>
-                                                                                                                <p>Şifre:
-                                                                                                                    <%
-                                                                                                                        Yonetici y3 = new Yonetici();
-                                                                                                                        out.println(y3.sifreCek(yn.getEmail()));
-                                                                                                                    %></p>
-                                                                                                                <p>Telefon Numarası:
-                                                                                                                    <%
-                                                                                                                        Yonetici y2 = new Yonetici();
-                                                                                                                        out.println(y2.TelefonNoCek(yn.getEmail()));
-                                                                                                                    %></p>
-                                                                                                                <p>Adres:
-                                                                                                                    <%
-                                                                                                                        Yonetici y4 = new Yonetici();
-                                                                                                                        out.println(y4.AdresCek(yn.getEmail()));
-                                                                                                                    %></p>
-
+                                                                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                                                                            <div class="wt-footerlogohold">
+                                                                                                                <strong class="wt-logo"><img src="images/14.png" alt="company logo here"></strong>
+                                                                                                                <div class="wt-description">
+                                                                                                                </div>
+                                                                                                                <ul class="wt-socialiconssimple wt-socialiconfooter">
+                                                                                                                    <li class="wt-facebook"><a href="https://www.facebook.com/ostimteknikuniversitesi/"><i class="fa fa-facebook-f"></i></a></li>
+                                                                                                                    <li class="wt-twitter"><a href="https://twitter.com/ostimteknikuniv?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a></li>
+                                                                                                                    <li class="wt-youtube"><a href="https://www.youtube.com/channel/UCJr3uk1QO8ZsM-PiRI4-Oog"><i class="fab fa-youtube"></i></a></li>
+                                                                                                                    <li class="wt-instagram"><a href="https://www.instagram.com/ostimteknikuniv/"><i class="fab fa-instagram"></i></a></li>
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                                                                                                            <div class="wt-footercol wt-widgetcompany">
+                                                                                                                <div class="wt-fwidgettitle">
+                                                                                                                    <h3>TU-MANİ</h3>
+                                                                                                                </div>
+                                                                                                                <ul class="wt-fwidgetcontent">
+                                                                                                                </ul>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        </div>
+                                                                                        </footer>
+                                                                                        <!--Footer End-->
                                                                                     </div>
-                                                                                </div>
-                                                                                <!-- User Profile End-->
+                                                                                    <!--Content Wrapper End-->
                                                                             </div>
-                                                                        </main>
-                                                                        <!--Main End-->
-                                                                        <!--Footer Start-->
-                                                                        <footer id="wt-footer" class="wt-footer wt-haslayout">
-                                                                            <div class="wt-footerholder wt-haslayout">
-                                                                                <div class="container">
-                                                                                    <div class="row">
-                                                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                                                                            <div class="wt-footerlogohold">
-                                                                                                <strong class="wt-logo"><img src="images/14.png" alt="company logo here"></a></strong>
-                                                                                                <div class="wt-description">
-                                                                                                </div>
-                                                                                                <ul class="wt-socialiconssimple wt-socialiconfooter">
-                                                                                                    <li class="wt-facebook"><a href="https://www.facebook.com/ostimteknikuniversitesi/"><i class="fa fa-facebook-f"></i></a></li>
-                                                                                                    <li class="wt-twitter"><a href="https://twitter.com/ostimteknikuniv?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a></li>
-                                                                                                    <li class="wt-youtube"><a href="https://www.youtube.com/channel/UCJr3uk1QO8ZsM-PiRI4-Oog"><i class="fab fa-youtube"></i></a></li>
-                                                                                                    <li class="wt-instagram"><a href="https://www.instagram.com/ostimteknikuniv/"><i class="fab fa-instagram"></i></a></li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                                                                                            <div class="wt-footercol wt-widgetcompany">
-                                                                                                <div class="wt-fwidgettitle">
-                                                                                                    <h3>TU-MANİ</h3>
-                                                                                                </div>
-                                                                                                <ul class="wt-fwidgetcontent">
-                                                                                                    <li><a href="Anasayfa.jsp">Ana Sayfa</a></li>
-                                                                                                    <li><a href="Hakkimizda.jsp">Hakkımızda</a></li>
-                                                                                                    <li><a href="DuyuruEkle-a.jsp">Duyuru Ekle</a></li>
-                                                                                                    <li><a href="Ayarlar.jsp">Ayarlar</a></li>
-                                                                                                    <li><a href="Iletisim.jsp">İletişim</a></li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </footer>
-                                                                        <!--Footer End-->
-                                                                        </div>
-                                                                        <!--Content Wrapper End-->
-                                                                        </div>
-                                                                        <!--Wrapper End-->
-                                                                        <script src="js/vendor/jquery-3.3.1.js"></script>
-                                                                        <script src="js/vendor/jquery-library.js"></script>
-                                                                        <script src="js/vendor/bootstrap.min.js"></script>
-                                                                        <script src="js/owl.carousel.min.js"></script>
-                                                                        <script src="js/chosen.jquery.js"></script>
-                                                                        <script src="js/tilt.jquery.js"></script>
-                                                                        <script src="js/scrollbar.min.js"></script>
-                                                                        <script src="js/prettyPhoto.js"></script>
-                                                                        <script src="js/jquery-ui.js"></script>
-                                                                        <script src="js/readmore.js"></script>
-                                                                        <script src="js/countTo.js"></script>
-                                                                        <script src="js/appear.js"></script>
-                                                                        <script src="js/tipso.js"></script>
-                                                                        <script src="js/jRate.js"></script>
-                                                                        <script src="js/main.js"></script>
-                                                                        </body>
-
-
-                                                                        </html>
+                                                                            <!--Wrapper End-->
+                                                                            <script src="js/vendor/jquery-3.3.1.js"></script>
+                                                                            <script src="js/vendor/jquery-library.js"></script>
+                                                                            <script src="js/vendor/bootstrap.min.js"></script>
+                                                                            <script src="js/owl.carousel.min.js"></script>
+                                                                            <script src="js/chosen.jquery.js"></script>
+                                                                            <script src="js/tilt.jquery.js"></script>
+                                                                            <script src="js/scrollbar.min.js"></script>
+                                                                            <script src="js/prettyPhoto.js"></script>
+                                                                            <script src="js/jquery-ui.js"></script>
+                                                                            <script src="js/readmore.js"></script>
+                                                                            <script src="js/countTo.js"></script>
+                                                                            <script src="js/appear.js"></script>
+                                                                            <script src="js/tipso.js"></script>
+                                                                            <script src="js/jRate.js"></script>
+                                                                            <script src="js/main.js"></script>
+                                                                            </body>
+                                                                            </html>

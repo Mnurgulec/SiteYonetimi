@@ -44,7 +44,7 @@ public class Duyurular {
         this.duyuru = duyuru;
     }
     
-    public static boolean duyuruEkle(int id,String baslik,String duyuru) throws ClassNotFoundException{
+    public static boolean duyuruEkle(String baslik,String duyuru) throws ClassNotFoundException{
         ArrayList<Duyurular> List = new ArrayList<>();
        
            try{
@@ -52,7 +52,7 @@ public class Duyurular {
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
-             String sql="INSERT INTO duyurular(id,duyuruBasligi,duyuruMetni) values('" + id + "','" + baslik + "' , '" + duyuru + "')";
+             String sql="INSERT INTO duyurular(duyuruBasligi,duyuruMetni) values('" + baslik + "' , '" + duyuru + "')";
              st.execute(sql);    
              return true;
         
@@ -83,6 +83,7 @@ public class Duyurular {
         }
         return list;
     }
+     
         public static ArrayList<Duyurular> duyuruBasligiCek(){
             ArrayList<Duyurular> list=new ArrayList<>();
             
@@ -110,11 +111,13 @@ public class Duyurular {
             ArrayList<Duyurular> list=new ArrayList<>();
         
            try{
-            PreparedStatement preparedStatement;
+            PreparedStatement ps;
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
-             Statement st=con.createStatement();
-             ResultSet rs=st.executeQuery("SELECT duyuruMetni FROM duyurular");      
+             String sql="SELECT duyuruMetni FROM duyurular";
+             ps=con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+              
              
         while(rs.next()){       
             Duyurular d1=new Duyurular();
@@ -126,6 +129,56 @@ public class Duyurular {
              System.out.println(e);
         }
         return list;
+    }
+        
+        public boolean  duyuruGuncelle(int id,String baslik,String duyuru) throws ClassNotFoundException{
+        ArrayList<Duyurular> List = new ArrayList<>();
+        boolean guncelledimi=false;
+       
+           try{
+            PreparedStatement ps;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             String sql="UPDATE duyurular SET duyuruBasligi=?,duyuruMetni=? WHERE id=?";
+             ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+             ps.setString(2, baslik);
+             ps.setString(3, duyuru);
+           ps.executeUpdate();
+              
+              guncelledimi=true;
+           return guncelledimi;
+        
+        }catch(Exception e){            
+             System.out.println(e); 
+            
+             return guncelledimi;
+        
+        }
+           
+    }
+           
+   public static boolean duyuruSil(int id) throws ClassNotFoundException{
+           ArrayList<Duyurular> List = new ArrayList<>();
+       
+           try{
+            PreparedStatement ps;
+             Class.forName("com.mysql.jdbc.Driver");
+             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
+             Statement st=con.createStatement();
+             String sql="DELETE FROM duyurular  WHERE id=?";
+             ps=con.prepareStatement(sql);
+             ps.setInt(1,id);
+            ps.executeUpdate();
+            
+             return true;
+        
+        }catch(Exception e){            
+             System.out.println(e);   
+             return false;
+        }
+           
     }
      
 }

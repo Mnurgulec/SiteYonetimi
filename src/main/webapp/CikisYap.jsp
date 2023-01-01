@@ -12,7 +12,7 @@
     <title>JSP Page</title>
 </head>
 <body>
-   <%@page language="java" session="false"%>
-   <a class="btn btn-primary" href="Anasayfa.jsp" role="button">Ana Sayfaya gitmek için tıklayınız.</a>
+         <form method="post" action="CikisYap2.jsp">
+             <input type="submit" value="Logout">
 </body>
 </html>

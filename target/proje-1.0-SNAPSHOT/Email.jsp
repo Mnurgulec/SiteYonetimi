@@ -15,6 +15,7 @@ request.setCharacterEncoding("ISO-8859-9");
     
     String result;
    // alici mail adresi
+   
     String to ="hayrunnisayurdagul3@gmail.com";
     // String header = request.getParameter("header");
   // String subject = request.getParameter("message");

@@ -35,12 +35,12 @@
          if(secim.equals("1"))
          {
             Kullanici k1=new Kullanici();
-            obj.setKullaniciEmail(email);
-            obj.setKullaniciSifresi(sifre);
            
            
             ArrayList<Kullanici> kullanici=k1.dogrula(email,sifre);
             if(kullanici.size()>0){
+             session.setAttribute("kullaniciEmail", email);
+             session.setAttribute("kullaniciSifre", sifre);
                response.sendRedirect("Kullaniciprofili-k.jsp");
             }else{
              out.println("<script>alert('Email veya şifre hatalı.Lütfen tekrar deneyiniz.')</script>");
@@ -51,10 +51,11 @@
          {
 
             Yonetici y1=new Yonetici();
-            yn.setEmail(email);
-            yn.setSifre(sifre);
+            
             ArrayList<Yonetici> yonetici=y1.Yazdir(email,sifre);
             if(yonetici.size()>0){
+             session.setAttribute("yoneticiEmail", email);
+             session.setAttribute("yoneticiSifre", sifre);
                response.sendRedirect("Kullaniciprofili-a.jsp");
             }else{
              out.println("hata");

@@ -3,7 +3,8 @@
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
-    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>    
+    <%request.setCharacterEncoding("utf-8");%>
  <%
   Cookie[] cookies = request.getCookies();
  String useremail = "";
@@ -70,8 +71,20 @@
                                                                                                     <div class="container-fluid">
                                                                                                         <div class="row">
                                                                                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                                                                                <strong class="wt-logo"><a href="index-2.html"><img src="images/14.png" alt="company logo here"></a></strong>
+                                                                                                                
                                                                                                                 <form class="wt-formtheme wt-formbanner wt-formbannervtwo">
+                                                                                                                    <style>
+                                                                                                    p.tumanu {
+                                                                                                        font-family: "Brush Script MT", cursive;
+                                                                                                        font-size: 200%;
+                                                                                                        color:#800000;
+                                                                                                    }
+
+                                                                                                </style>
+                                                                                                </head>
+                                                                                                <body>
+
+                                                                                                    <br><p class="tumanu">Tu-Mani</p>
                                                                                                                 </form>
                                                                                                                 <div class="wt-rightarea">
                                                                                                                     <nav id="wt-nav" class="wt-nav navbar-expand-lg">
@@ -82,36 +95,16 @@
                                                                                                                             <ul class="navbar-nav">
                                                                                                                                 <li class="menu-item-has-children page_item_has_children">
                                                                                                                                     <li class="menu-item-has-children page_item_has_children">
-													<a href="Anasayfa.jsp">Ana Sayfa</a>
+													<a href="index.jsp">Ana Sayfa</a>
 													
 												</li>
                                                                                             <li class="menu-item-has-children page_item_has_children">
-													<a href="Duyurular.jsp">Duyurular</a>
-													
+													<a href="index.jsp">Giriş Yap</a>
 												</li>
-                                                                                            <li class="menu-item-has-children page_item_has_children">
-													<a href="Hakkimizda.jsp">Hakkımızda</a>	
-												</li>
-                                                                                            <li class="menu-item-has-children page_item_has_children">
-													<a href="Girisyap.jsp">Giriş Yap</a>
-													<ul class="sub-menu">
-														<li >
-															<a href="Girisyap.jsp">Giriş Yap</a>
-														</li>
-                                                                                                                <li >
-															<a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
-														</li>
-														
-													</ul>
-												</li>
-                                                                                            
-                                                                                            
                                                                                             
 												<li class="menu-item-has-children page_item_has_children">
 													<a href="Iletisim.jsp">İletişim</a>
-													
 												</li>
-                                                                                           
                                                                                            
 											</ul>
 										</div>
@@ -122,11 +115,6 @@
 										</figure>
 										<div class="wt-username">
 											<h3>TU-MANİ</h3>
-											<a href="Ayarlar.jsp">Ayarlar</a>
-                                                                                                                                    </a>
-                                                                                                                                </li>
-                                                                                                                            </ul>
-                                                                                                                        </nav>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -146,57 +134,39 @@
                                                                                                             <em></em>
                                                                                                         </span>
                                                                                                     </div>
-                                                                                                    <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
-                                                                                                        <div class="wt-companysdetails wt-usersidebar">
-                                                                                                            <figure class="wt-companysimg">
-                                                                                                                <img src="images/sidebar/img-01.jpg" alt="img description">
-                                                                                                            </figure>
-                                                                                                            <div class="wt-companysinfo">
-                                                                                                                <figure><img src="images/sidebar/3.jpg" alt="img description"></figure>
-                                                                                                                <div class="wt-title">
-                                                                                                                    <h2><a href="javascript:void(0);">İsim</a></h2>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <nav id="wt-navdashboard" class="wt-navdashboard">
-                                                                                                            <ul>
-                                                                                                                <li class="menu-item-has-children">
-                                                                                                                    <a href="javascript:void(0);">
-                                                                                                                        <i class="ti-dashboard"></i>
-                                                                                                                        <span>Giderler</span>
-                                                                                                                    </a>
-                                                                                                                    <ul class="sub-menu">
-                                                                                                                        <li><hr><a href="Giderlertakvimi-k.jsp">Giderler Takvimi</a></li>
-                                                                                                                    </ul>
-                                                                                                                </li>
-                                                                                                                <li>
-                                                                                                                    <a href="Uyebilgileri-k.jsp">
-                                                                                                                        <i class="ti-briefcase"></i>
-                                                                                                                        <span>Profil</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                                <li class="wt-active">
-                                                                                                                    <a href="Girisyap.jsp">
-                                                                                                                        <i class="ti-anchor"></i>
-                                                                                                                        <span>Giriş Yap</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                                <li>
-                                                                                                                    <a href="Iletisim.jsp">
-                                                                                                                        <i class="ti-tag"></i>
-                                                                                                                        <span>İletişim</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                                <li>
-                                                                                                                    <a href="Anasayfa.jsp">
-                                                                                                                        <i class="ti-shift-right"></i>
-                                                                                                                        <span>Ana Sayfa</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                            </ul>
-                                                                                                        </nav>
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                                   <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
+						<div class="wt-companysdetails wt-usersidebar">
+							<figure class="wt-companysimg">
+								<img src="images/sidebar/img-01.jpg" alt="img description">
+							</figure>
+							
+						</div>
+						<nav id="wt-navdashboard" class="wt-navdashboard">
+							<ul>
+								<li class="wt-active">
+									<a href="index.jsp">
+										<i class="ti-dashboard"></i>
+										<span>Anasayfa</span>
+									</a>
+								</li>
+								<li>
+									<a href="GirisYap.jsp">
+										<i class="ti-briefcase"></i>
+										<span>Giriş Yap</span>
+									</a>
+								</li>
+								<li class="wt-active">
+									<a href="Iletisim.jsp">
+										<i class="ti-anchor"></i>
+										<span>İletişim</span>
+									</a>
+								</li>
+								
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
                                                                                                 <!--Sidebar Start-->
                                                                                                 <!--Register Form Start-->
                                                                                                 <section class="wt-haslayout wt-dbsectionspace">
@@ -233,7 +203,7 @@
                                                                                                                           
                                                                                                                                 </fieldset>
                                                                                                                                     <div class="wt-updatall">
-                                                                                                                                        <input type="checkbox" name="rememberMe" value="" class="">Beni Hatırla
+                                                                                                                                        <input type="checkbox" name="rememberMe">Beni Hatırla</input>
                                                                                                                                     </div>
                                                                                                                              
                                                                                                                                 <div class="wt-updatall">
@@ -242,9 +212,6 @@
                                                                                                                                     <input type="submit" class="wt-btn" href="javascript:void(0);" value="Giriş Yap">
                                                                                                                                 </div>
 
-                                                                                                                                <div class="form-group form-group-half">
-                                                                                                                                    <a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
-                                                                                                                                </div>
                                                                                                                             </form>
                                                                                                                         </div>
                                                                                                                     </div>

@@ -83,12 +83,16 @@ public class Yonetici {
         ArrayList<Yonetici> List = new ArrayList<>();
        
            try{
-            PreparedStatement preparedStatement;
+            PreparedStatement ps;
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
              
-             ResultSet rs=st.executeQuery("SELECT *FROM yonetici WHERE yoneticiEmail='" + email + "' and yoneticiSifre='" + sifre + "';");      
+            String sql="SELECT *FROM yonetici WHERE yoneticiEmail=? and yoneticiSifre=?";  
+            ps=con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, sifre);
+            ResultSet rs = ps.executeQuery();
              
         while(rs.next()){                    
             Yonetici y1=new Yonetici();
@@ -109,12 +113,15 @@ public class Yonetici {
     public String kullaniciAdiCek(String email){
           Yonetici y1=new Yonetici();
           try{
-            PreparedStatement preparedStatement;
+            PreparedStatement ps;
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
              
-             ResultSet rs=st.executeQuery("SELECT yoneticiAdi FROM yonetici WHERE yoneticiEmail='" + email + "';");      
+             String sql="SELECT yoneticiAdi FROM yonetici WHERE yoneticiEmail=?";   
+              ps=con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
              
         while(rs.next()){                    
   
@@ -134,12 +141,16 @@ public class Yonetici {
      public String TelefonNoCek(String email){
           Yonetici y1=new Yonetici();
           try{
-            PreparedStatement preparedStatement;
+            PreparedStatement ps;
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
+             String sql="SELECT yoneticiTelefonNo FROM yonetici WHERE yoneticiEmail=?";   
+            ps=con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+           
              
-             ResultSet rs=st.executeQuery("SELECT yoneticiTelefonNo FROM yonetici WHERE yoneticiEmail='" + email + "';");      
              
         while(rs.next()){                    
            
@@ -159,12 +170,15 @@ public class Yonetici {
          public String sifreCek(String email){
           Yonetici y1=new Yonetici();
           try{
-            PreparedStatement preparedStatement;
+            PreparedStatement ps;
              Class.forName("com.mysql.jdbc.Driver");
              Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
              Statement st=con.createStatement();
+             String sql="SELECT yoneticiSifre FROM yonetici WHERE yoneticiEmail=?";   
+            ps=con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
              
-             ResultSet rs=st.executeQuery("SELECT yoneticiSifre FROM yonetici WHERE yoneticiEmail='" + email + "';");      
              
         while(rs.next()){                    
            
@@ -188,13 +202,15 @@ public class Yonetici {
      public String AdresCek(String email){
           Yonetici y1=new Yonetici();
           try{
-            PreparedStatement preparedStatement;
+            PreparedStatement ps;
             Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection("jdbc:mysql://app.sobiad.com:3306/grup12?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "grup12", "grup12");
-            Statement st=con.createStatement();
-             
-            ResultSet rs=st.executeQuery("SELECT yoneticiAdres FROM yonetici WHERE yoneticiEmail='" + email + "';");      
-             
+            Statement st=con.createStatement();           
+             String sql="SELECT yoneticiAdres FROM yonetici WHERE yoneticiEmail=?";   
+            ps=con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+     
         while(rs.next()){                    
             y1.setAdres(rs.getString("yoneticiAdres"));
         }

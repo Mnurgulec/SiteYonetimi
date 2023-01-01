@@ -1,12 +1,36 @@
+
+<%@page import="tumani.Kullanici"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="tumani.kullaniciBorcEkle"%>
+<%@page import="tumani.BorcEkleme"%>
+<%
+    if (session.getAttribute("kullaniciEmail") != null) {
+        response.sendRedirect("Girisyap.jsp");
+    }
+%>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->	<html class="no-js" lang=""> <!--<![endif]-->
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <%request.setCharacterEncoding("utf-8");%>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode > 31 && (charCode < 45 || charCode > 57) )
+            {
+               
+                return false;
+            }
+                
+            
+            return true;
+        }
+    </script>
     <title>TU-MANİ</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,236 +69,205 @@
                                                                                     <div id="wt-wrapper" class="wt-wrapper wt-haslayout">
                                                                                         <!-- Content Wrapper Start -->
                                                                                         <div class="wt-contentwrapper">
-                                                                                          <!-- Header Start -->
-                                                                                <header id="wt-header" class="wt-header wt-headervtwo wt-haslayout">
-                                                                                    <div class="wt-navigationarea">
-                                                                                        <div class="container-fluid">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                                                                    <strong class="wt-logo"><a href="index-2.html"><img src="images/14.png" alt="company logo here"></a></strong>
-                                                                                                    <form class="wt-formtheme wt-formbanner wt-formbannervtwo">
-                                                                                                    </form>
-                                                                                                    <div class="wt-rightarea">
-                                                                                                        <nav id="wt-nav" class="wt-nav navbar-expand-lg">
-                                                                                                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                                                                                                <i class="lnr lnr-menu"></i>
-                                                                                                            </button>
-                                                                                                            <div class="collapse navbar-collapse wt-navigation" id="navbarNav">
-                                                                                                                <ul class="navbar-nav">
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Anasayfa-a.jsp">Ana Sayfa</a>
+                                                                                            <!-- Header Start -->
+                                                                                            <header id="wt-header" class="wt-header wt-headervtwo wt-haslayout">
+                                                                                                <div class="wt-navigationarea">
+                                                                                                    <div class="container-fluid">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                                                                                                                    </li>
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Duyurular.jsp">Duyurular</a>
-                                                                                                                    </li>
-                                                                                                                     <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="DuyuruEkle-a.jsp">Duyuru Ekle</a>
-                                                                                                                    </li>
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href=Hakkimizda.jsp">Hakkımızda</a>
+                                                                                                                <form class="wt-formtheme wt-formbanner wt-formbannervtwo">
+                                                                                                                    <style>
+                                                                                                                        p.tumanu {
+                                                                                                                            font-family: "Brush Script MT", cursive;
+                                                                                                                            font-size: 200%;
+                                                                                                                            color:#800000;
+                                                                                                                        }
 
-                                                                                                                    </li>
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="">Kullanıcı Bilgisi</a>
-                                                                                                                        <ul class="sub-menu">
-                                                                                                                            <li >
-                                                                                                                                <a href="Uyebilgileri-a.jsp">Üye Bilgileri</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="Kullaniciprofili-a.jsp">Kişi Bilgileri</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="Giderlertakvimi-a.jsp">Giderler Takvimi</a>
-                                                                                                                            </li>
+                                                                                                                    </style>
+                                                                                                                    </head>
+                                                                                                                    <body>
 
-                                                                                                                        </ul>
-                                                                                                                    </li>
-                                                                                                                    </li>
+                                                                                                                        <br><p class="tumanu">Tu-Mani</p>
+                                                                                                                </form>
+                                                                                                                <div class="wt-rightarea">
+                                                                                                                    <nav id="wt-nav" class="wt-nav navbar-expand-lg">
+                                                                                                                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                                                                                                            <i class="lnr lnr-menu"></i>
+                                                                                                                        </button>
+                                                                                                                        <div class="collapse navbar-collapse wt-navigation" id="navbarNav">
+                                                                                                                            <ul class="navbar-nav">
+                                                                                                                                <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <a href="Duyurular-a.jsp">Duyurular</a>
+                                                                                                                                </li>
+                                                                                                                                <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <a href="DuyuruEkle-a.jsp">Duyuru Ekle</a>
+                                                                                                                                </li> <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <a href="Uyebilgileri-a.jsp">Üye Bilgileri</a>
+                                                                                                                                </li>
+                                                                                                                                <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <a href="Kullaniciprofili-a.jsp">Kişi Bilgileri</a>
+                                                                                                                                </li>
+                                                                                                                                <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <a href="Giderlertakvimi-a.jsp">Giderler Takvimi</a>
+                                                                                                                                </li>
+                                                                                                                                </li>
+                                                                                                                                <li class="menu-item-has-children page_item_has_children">
+                                                                                                                                    <a href="CikisYap.jsp">Çıkış Yap</a>
 
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Iletisim.jsp">İletişim</a>
+                                                                                                                                </li>   
+                                                                                                                                <div class="wt-userlogedin">
+                                                                                                                                    <figure class="wt-userimg">
+                                                                                                                                        <img src="images/save-2.png" alt="image description">
+                                                                                                                                    </figure>
+                                                                                                                                    <div class="wt-username">
+                                                                                                                                        <h3>TU-MANİ</h3>
 
-                                                                                                                    </li>
-                                                                                                                    <li class="menu-item-has-children page_item_has_children">
-                                                                                                                        <a href="Girisyap.jsp">Giriş Yap</a>
-                                                                                                                        <ul class="sub-menu">
-                                                                                                                            <li >
-                                                                                                                                <a href="Kaydol.jsp">Kayıt Ol</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="Sifremiunuttum.jsp">Şifremi Unuttum</a>
-                                                                                                                            </li>
-                                                                                                                            <li >
-                                                                                                                                <a href="CikisYap.jsp">Çıkış Yap</a>
-                                                                                                                            </li>
-                                                                                                                        </ul>
-                                                                                                                    </li>   
-                                                                                                                    <div class="wt-userlogedin">
-                                                                                                                        <figure class="wt-userimg">
-                                                                                                                            <img src="images/save-2.png" alt="image description">
-                                                                                                                        </figure>
-                                                                                                                        <div class="wt-username">
-                                                                                                                            <h3>TU-MANİ</h3>
-                                                                                                                            <a href="Ayarlar.jsp">Ayarlar</a>
-
+                                                                                                                                    </div>
+                                                                                                                                </div>
                                                                                                                         </div>
-                                                                                                                    </div>
-                                                                                                            </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                </header>
-                                                                                            </div>
-                                                                                            </ul>
-                                                                                            </nav>
-                                                                                        </div>
-                                                                                    </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        </header>
-                                                                        <!--Header End-->
-                                                                                            <!--Main Start-->
-                                                                                            <main id="wt-main" class="wt-main wt-haslayout">
-                                                                                                <!--Sidebar Start-->
-                                                                                                <div id="wt-sidebarwrapper" class="wt-sidebarwrapper">
-                                                                                                    <div id="wt-btnmenutoggle" class="wt-btnmenutoggle">
-                                                                                                        <span class="menu-icon">
-                                                                                                            <em></em>
-                                                                                                            <em></em>
-                                                                                                            <em></em>
-                                                                                                        </span>
-                                                                                                    </div>
-                                                                                                    <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
-                                                                                                        <div class="wt-companysdetails wt-usersidebar">
-                                                                                                            <figure class="wt-companysimg">
-                                                                                                                <img src="images/sidebar/img-01.jpg" alt="img description">
-                                                                                                            </figure>
-                                                                                                            <div class="wt-companysinfo">
-                                                                                                                <figure><img src="images/sidebar/3.jpg" alt="img description"></figure>
-                                                                                                                <div class="wt-title">
-                                                                                                                    <h2><a href="javascript:void(0);">İsim</a></h2>
                                                                                                                 </div>
                                                                                                             </div>
+                                                                                                            </header>
                                                                                                         </div>
-                                                                                                        <nav id="wt-navdashboard" class="wt-navdashboard">
-                                                                                                            <ul>
-                                                                                                                <li class="menu-item-has-children">
-                                                                                                                    <a href="javascript:void(0);">
-                                                                                                                        <i class="ti-dashboard"></i>
-                                                                                                                        <span>Giderler</span>
-                                                                                                                    </a>
-                                                                                                                    <ul class="sub-menu">
-                                                                                                                        <li><hr><a href="Giderlertakvimi-k.jsp">Giderler Takvimi</a></li>
-                                                                                                                    </ul>
-                                                                                                                </li>
-                                                                                                                <li>
-                                                                                                                    <a href="Uyebilgileri-k.jsp">
-                                                                                                                        <i class="ti-briefcase"></i>
-                                                                                                                        <span>Profil</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                                <li class="wt-active">
-                                                                                                                    <a href="Girisyap.jsp">
-                                                                                                                        <i class="ti-anchor"></i>
-                                                                                                                        <span>Giriş Yap</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                                <li>
-                                                                                                                    <a href="Iletisim.jsp">
-                                                                                                                        <i class="ti-tag"></i>
-                                                                                                                        <span>İletişim</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                                <li>
-                                                                                                                    <a href="Anasayfa.jsp">
-                                                                                                                        <i class="ti-shift-right"></i>
-                                                                                                                        <span>Ana Sayfa</span>
-                                                                                                                    </a>
-                                                                                                                </li>
-                                                                                                            </ul>
+                                                                                                        </ul>
                                                                                                         </nav>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <form method="post" action="GiderKontrol.jsp">
-                                                                                                    <div class="row">
-                                                                                                        <%-- <div class="col">
-                                                                                                           <input type="text" name="kullaniciID" class="form-control" placeholder="Kullanıcı id:">
-                                                                                                        </div> --%>
-                                                                                                        <div class="col">
-                                                                                                            <input type="text" name="aidat" class="form-control" placeholder="Aidat Borcu:">
-                                                                                                        </div>
-                                                                                                        <div class="col">
-                                                                                                            <input type="text" name="elektrik" class="form-control" placeholder="Elektrik Borcu:">
-                                                                                                        </div>
-                                                                                                        <div class="col">
-                                                                                                            <input type="text" name="su" class="form-control" placeholder="Su Borcu:">
-                                                                                                        </div>
-                                                                                                        <div class="col">
-                                                                                                            <input type="text" name="gaz" class="form-control" placeholder="Gaz Borcu:">
-                                                                                                        </div>
-                                                                                                        <div class="col">
-                                                                                                            <input type="text" name="guvenlik" class="form-control" placeholder="Güvenlik Görevlisi Borcu:">
-                                                                                                        </div><!-- comment -->
-                                                                                                        <div class="col">
-                                                                                                            <input type="text" name="temizlik" class="form-control" placeholder="Temizlik Görevlisi Borcu:">
-                                                                                                        </div>
-                                                                                                        <div class="col">
-                                                                                                            <input type="text" name="diger" class="form-control" placeholder="Diğer Giderler Borcu:">
-                                                                                                        </div>
-                                                                                                    </div><br>
-                                                                                                     <button type="submit" class="btn btn-primary">Kaydet</button>
-                                                                                                </form>
-                                                                                                <!--Sidebar Start-->
-                                                                                                <!--Register Form Start-->
-                                                                                                <%--	<script>
-                                                                                                                window.onload = function() {
-                                                                                                                
-                                                                                                                var chart = new CanvasJS.Chart("chartContainer", {
-                                                                                                                        theme: "light2", // "light1", "light2", "dark1", "dark2"
-                                                                                                                        exportEnabled: true,
-                                                                                                                        animationEnabled: true,
-                                                                                                                        title: {
-                                                                                                                                text: "Gelir-Gider Dağılımı"
-                                                                                                                        },
-                                                                                                                        data: [{
-                                                                                                                                type: "pie",
-                                                                                                                                startAngle: 40,
-                                                                                                                                toolTipContent: "<b>{label}</b>: {y}%",
-                                                                                                                                showInLegend: "true",
-                                                                                                                                legendText: "{label}",
-                                                                                                                                indexLabelFontSize: 16,
-                                                                                                                                indexLabel: "{label} - {y}%",
-                                                                                                                                dataPoints: [
-                                                                                                                                        { y: 15, label: "Güvenlik" },
-                                                                                                                                        { y: 15, label: "Temizlik Görevlisi" },
-                                                                                                                                        { y: 15, label: "Aidat" },
-                                                                                                                                        { y: 15, label: "Elektrik" },
-                                                                                                                                        { y: 10, label: "Su" },
-                                                                                                                                        { y: 10, label: "Gaz" },
-                                                                                                                                        { y: 20, label: "Diğer Giderler" }
-                                                                                                                                ]
-                                                                                                                        }]
-                                                                                                                });
-                                                                                                                chart.render();
-                                                                                                                
-                                                                                                                }
-                                                                                                                </script>
-                                                                                                                <div id="chartContainer" style="height: 700px; width: 100%;"></div>
-                                                                                                                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-                                                                                                        <!--Register Form End-->	--%>		
-                                                                                            </main>
-                                                                                            <!--Main End-->	
                                                                                         </div>
-                                                                                        <!--Content Wrapper End-->
+                                                                                    </div>
+                                                                                    </div>
+                                                                                    </div>
+                                                                                    </header>
+                                                                                    <!--Header End-->
+                                                                                    <!--Main Start-->
+                                                                                    <main id="wt-main" class="wt-main wt-haslayout">
+                                                                                        <!--Sidebar Start-->
+                                                                                        <div id="wt-sidebarwrapper" class="wt-sidebarwrapper">
+                                                                                            <div id="wt-btnmenutoggle" class="wt-btnmenutoggle">
+                                                                                                <span class="menu-icon">
+                                                                                                    <em></em>
+                                                                                                    <em></em>
+                                                                                                    <em></em>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                            <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
+                                                                                                <div class="wt-companysdetails wt-usersidebar">
+                                                                                                    <figure class="wt-companysimg">
+                                                                                                        <img src="images/sidebar/img-01.jpg" alt="img description">
+                                                                                                    </figure>
+                                                                                                    <div class="wt-companysinfo">
+                                                                                                        <figure><img src="images/sidebar/3.jpg" alt="img description"></figure>
+                                                                                                        <div class="wt-title">
+                                                                                                            <h2><a href="javascript:void(0);"></a></h2>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <nav id="wt-navdashboard" class="wt-navdashboard">
+                                                                                                    <ul>
+                                                                                                        <li class="menu-item-has-children">
+
+                                                                                                            <a href="Giderlertakvimi-a.jsp">
+                                                                                                                <i class="ti-tag"></i>
+                                                                                                                <span>Gider Ekle</span>
+                                                                                                            </a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="Uyebilgileri-a.jsp">
+                                                                                                                <i class="ti-tag"></i>
+                                                                                                                <span>Profil</span>
+                                                                                                            </a>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </nav>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--Sidebar Start-->
+                                                                                        <!--Register Form Start-->
+                                                                                        <section class="wt-haslayout wt-dbsectionspace">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                                                                                                    <div class="wt-dashboardbox wt-dashboardtabsholder wt-accountsettingholder">
+                                                                                                        <div class="wt-dashboardtabs">
+                                                                                                            <ul class="wt-tabstitle nav navbar-nav">
+                                                                                                                <li class="nav-item">
+                                                                                                                    <a class="active" data-toggle="tab" href="#wt-security">Borç Ekle</a>
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        </div>
+                                                                                                        <div class="wt-tabscontent tab-content">
+                                                                                                            <div class="wt-securityhold tab-pane active fade show" id="wt-security">
+                                                                                                                <div class="wt-securitysettings wt-tabsinfo">
+                                                                                                                    <div class="wt-tabscontenttitle">
+                                                                                                                        <h2>TU-MANİ</h2>
+                                                                                                                    </div>
+                                                                                                                    <form class="wt-formtheme wt-userform" action="" method="post">
+
+                                                                                                                        <fieldset>
+                                                                                                                            <div class="form-group form-group-half">
+                                                                                                                                <input type="text" name="elektrik" class="form-control" placeholder="Toplam elektrik borcu giriniz"  onkeypress="return isNumberKey(event)">
+                                                                                                                            </div>
+
+                                                                                                                            <div class="form-group form-group-half">
+                                                                                                                                <input type="text" name="calisan" class="form-control" placeholder="Toplam çalışan borcunu giriniz"  onkeypress="return isNumberKey(event)">
+                                                                                                                            </div>
+
+                                                                                                                            <div class="form-group form-group-half">
+                                                                                                                                <input type="text" name="diger" class="form-control" placeholder="Toplam diğer giderleri giriniz"  onkeypress="return isNumberKey(event)">
+                                                                                                                            </div>
+                                                                                                                            <div class="form-group form-group-half">
+                                                                                                                                <input type="text" name="aidat" class="form-control" placeholder="Toplam aidat borcunu giriniz"  onkeypress="return isNumberKey(event)">
+                                                                                                                            </div>
+                                                                                                                        </fieldset>
+
+                                                                                                                        <div class="wt-updatall">
+                                                                                                                            <i class="ti-announcement"></i>
+                                                                                                                            <span>Kaydet</span>
+                                                                                                                            <input type="submit" class="wt-btn" href="javascript:void(0);" value="Kaydet">
+                                                                                                                        </div>
+
+                                                                                                                    </form>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                                                                                    <div class="wt-haslayout wt-dbsectionspace wt-codescansidebar">
+                                                                                                        <div class="tg-authorcodescan wt-codescanholder">
+
+                                                                                                            <div class="wt-codescanicons">
+                                                                                                                <span>TU-MANİ</span>
+                                                                                                                <ul class="wt-socialiconssimple">
+                                                                                                                    <li class="wt-facebook"><a href="https://www.facebook.com/ostimteknikuniversitesi/"><i class="fa fa-facebook-f"></i></a></li>
+                                                                                                                    <li class="wt-twitter"><a href="https://twitter.com/ostimteknikuniv?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a></li>
+                                                                                                                    <li class="wt-youtube"><a href="https://www.youtube.com/channel/UCJr3uk1QO8ZsM-PiRI4-Oog"><i class="fab fa-youtube"></i></a></li>
+                                                                                                                    <li class="wt-instagram"><a href="https://www.instagram.com/ostimteknikuniv/"><i class="fab fa-instagram"></i></a></li>
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="wt-companyad">
+                                                                                                            <figure class="wt-companyadimg"><img src="images/work/img-01.jpg" alt="img description"></figure>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3"></div>
+
+                                                                                            </div>
+                                                                                        </section>
+                                                                                        <!--Register Form End-->
+                                                                                    </main>
+                                                                                    <!--Main End-->	
+                                                                                    </div>
+                                                                                    <!--Content Wrapper End-->
                                                                                     </div>
                                                                                     <!--Wrapper End-->
                                                                                     <script src="js/vendor/jquery-3.3.1.js"></script>
                                                                                     <script src="js/vendor/jquery-library.js"></script>
                                                                                     <script src="js/vendor/bootstrap.min.js"></script>
-                                                                                    <script src="js/jquery.basictable.min.js"></script>
+                                                                                    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>
                                                                                     <script src="js/owl.carousel.min.js"></script>
+                                                                                    <script src="js/jquery.sortable.js"></script>
                                                                                     <script src="js/chosen.jquery.js"></script>
                                                                                     <script src="js/tilt.jquery.js"></script>
                                                                                     <script src="js/scrollbar.min.js"></script>
@@ -284,68 +277,53 @@
                                                                                     <script src="js/countTo.js"></script>
                                                                                     <script src="js/appear.js"></script>
                                                                                     <script src="js/tipso.js"></script>
-                                                                                    <script src="js/chart.js"></script>
+                                                                                    <script src="js/gmap3.js"></script>
                                                                                     <script src="js/jRate.js"></script>
                                                                                     <script src="js/main.js"></script>
                                                                                     <script>
-                                                                                        const menu_icon = document.querySelector('.menu-icon');
-                                                                                        function addClassFunThree() {
-                                                                                            this.classList.toggle("click-menu-icon");
-                                                                                        }
-                                                                                        menu_icon.addEventListener('click', addClassFunThree);
-                                                                                        var ctx = document.getElementById("wt-jobchart");
-                                                                                        var wt_jobchart = new Chart(ctx, {
-                                                                                            type: 'bar',
-                                                                                            data: {
-                                                                                                labels: ["January", "February", "March", "April"],
-                                                                                                datasets: [{
-                                                                                                        label: 'Total Earnings',
-                                                                                                        data: [6, 8, 4, 7, 10],
-                                                                                                        backgroundColor: [
-                                                                                                            'rgba(255, 99, 132, 0.2)',
-                                                                                                            'rgba(54, 162, 235, 0.2)',
-                                                                                                            'rgba(255, 206, 86, 0.2)',
-                                                                                                            'rgba(75, 192, 192, 0.2)',
-                                                                                                            'rgba(153, 102, 255, 0.2)',
-                                                                                                            'rgba(255, 159, 64, 0.2)'
-                                                                                                        ],
-                                                                                                        borderColor: [
-                                                                                                            'rgba(255,99,132,1)',
-                                                                                                            'rgba(54, 162, 235, 1)',
-                                                                                                            'rgba(255, 206, 86, 1)',
-                                                                                                            'rgba(75, 192, 192, 1)',
-                                                                                                            'rgba(153, 102, 255, 1)',
-                                                                                                            'rgba(255, 159, 64, 1)'
-                                                                                                        ],
-                                                                                                        borderWidth: 1
-                                                                                                    }]
-                                                                                            },
-                                                                                            options: {
-                                                                                                scales: {
-                                                                                                    yAxes: [{
-                                                                                                            ticks: {
-                                                                                                                beginAtZero: true,
-                                                                                                                fontSize: 12,
-                                                                                                                fontColor: '#767676'
-                                                                                                            }
-                                                                                                        }]
-                                                                                                },
-                                                                                                legend: {
-                                                                                                    labels: {
-                                                                                                        fontSize: 14,
-                                                                                                        fontColor: '#767676',
-                                                                                                        FontFamily: 'Open Sans',
-
-                                                                                                    }
-                                                                                                }
-                                                                                            }
-                                                                                        });
-                                                                                        menu_icon.addEventListener('click', addClassFunThree);
-                                                                                        $('.wt-tablecategories').basictable({
-                                                                                            breakpoint: 720,
-                                                                                        });
+                                                                                                                                    const menu_icon = document.querySelector('.menu-icon');
+                                                                                                                                    function addClassFunThree() {
+                                                                                                                                        this.classList.toggle("click-menu-icon");
+                                                                                                                                    }
+                                                                                                                                    menu_icon.addEventListener('click', addClassFunThree);
                                                                                     </script>
                                                                                     </body>
 
-
                                                                                     </html>
+
+
+
+                                                                                    <%
+                                                                                        try {
+
+                                                                                            double toplamElektrik = Double.parseDouble(request.getParameter("elektrik"));
+
+                                                                                            double toplamCalisan = Double.parseDouble(request.getParameter("calisan"));
+                                                                                            double toplamDiger = Double.parseDouble(request.getParameter("diger"));
+                                                                                            double toplamAidat = Double.parseDouble(request.getParameter("aidat"));
+                                                                                            BorcEkleme borcEkle = new BorcEkleme();
+                                                                                            boolean eklendiMi = borcEkle.borcEkle(toplamElektrik, toplamCalisan, toplamDiger, toplamAidat);
+
+                                                                                            if (eklendiMi == true) {
+                                                                                                out.println("<script>alert('Kullanıcının borçları eklendi..')</script>");
+                                                                                                out.println("<script>window.location.href='Giderlertakvimi-a.jsp';</script>");
+
+                                                                                                Kullanici k1 = new Kullanici();
+                                                                                                kullaniciBorcEkle kullaniciBorc = new kullaniciBorcEkle();
+
+                                                                                                ArrayList<Kullanici> kullanicilar = k1.kullaniciIDCek();
+                                                                                                kullaniciBorc.kullaniciElektrigiEkle(toplamElektrik / kullanicilar.size());
+                                                                                                kullaniciBorc.kullaniciAidatEkle(toplamAidat / kullanicilar.size());
+                                                                                                kullaniciBorc.kullaniciCalisanEkle(toplamCalisan / kullanicilar.size());
+                                                                                                kullaniciBorc.kullaniciDigerEkle(toplamCalisan / kullanicilar.size());
+
+                                                                                            } else {
+                                                                                                out.println("<script>alert('eklenmedi..')</script>");
+                                                                                                out.println("<script>window.location.href='Giderlertakvimi-a.jsp';</script>");
+                                                                                            }
+                                                                                        } catch (Exception e) {
+                                                                                            out.println(e);
+                                                                                            out.println("hataa");
+                                                                                        }
+
+                                                                                    %>              

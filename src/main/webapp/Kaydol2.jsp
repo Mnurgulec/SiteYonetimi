@@ -1,20 +1,16 @@
 <%-- 
-    Document   : Kaydet
-    Created on : 16 Ara 2022, 20:27:22
-    Author     : tugce
+    Document   : Kaydol2.jsp
+    Created on : 31 Ara 2022, 14:14:51
+    Author     : Makbule Nur
 --%>
-
-<%@page import="java.util.Base64"%>
+ <%request.setCharacterEncoding("utf-8");%>
+<%@page import="tumani.Kullanici"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="obj" class="tumani.Kullanici" scope="session"/>
-<%@page import="tumani.*"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.util.ArrayList"%>
+<% 
+if(session.getAttribute("kullaniciEmail")!=null){
+    response.sendRedirect("Girisyap.jsp");
+}
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,19 +18,24 @@
     <title>JSP Page</title>
 </head>
 <body>
-    
-    <% 
+    <%
         Kullanici db = new Kullanici();
         String kullaniciAdi = request.getParameter("kullaniciAdi");
         String kullaniciSifresi = request.getParameter("kullaniciSifresi");
-        String BasicBase64formatSifre
-            = Base64.getEncoder().encodeToString(kullaniciSifresi.getBytes());
-        out.println(BasicBase64formatSifre);
         String kullaniciEmail = request.getParameter("kullaniciEmail");
         String kullaniciTelefonNo = request.getParameter("kullaniciTelefonNo");
-   
-        //db.ekle(kullaniciAdi, BasicBase64formatSifre, kullaniciEmail,kullaniciTelefonNo);
-        
+
+        if (kullaniciAdi.equals("") || kullaniciSifresi.equals("") || kullaniciEmail.equals("") || kullaniciTelefonNo.equals("")) {
+
+            out.println("<script>alert('Boş alan girilemez!.')</script>");
+            out.println("<script>window.location.href='Kaydol.jsp';</script>");
+        } else {
+            db.ekle(kullaniciAdi, kullaniciSifresi, kullaniciEmail, kullaniciTelefonNo);
+            out.println("Kullanıcı kaydedildi.");
+            out.println("<script>window.location.href='Uyebilgileri-a.jsp';</script>");
+        }
+
+
     %>
 </body>
 </html>
